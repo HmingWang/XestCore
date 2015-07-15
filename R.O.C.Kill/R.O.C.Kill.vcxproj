@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="Desktop.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Session.hpp" />
     <ClInclude Include="XString.hpp" />
     <ClInclude Include="DBUtil.hpp" />
     <ClInclude Include="GameCard.hpp" />

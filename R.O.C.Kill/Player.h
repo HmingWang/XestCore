@@ -24,10 +24,10 @@ public:
 	int getId();
 	
 private:
-	int id;                             //session id
-	int index;                          //位序
+	int id;                              //Session id
+	int index;                           //位序
 	vector<GameCard*> handCards;         //手牌区
-	GameCard *equipCards;               //装备区
+	GameCard *equipCards;                //装备区
 	RoleCard *role;                      //角色牌
 	vector<GameCard*> judgeCards;        //判定区
 	PowerCard *power;                    //体力牌

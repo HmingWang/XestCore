@@ -33,4 +33,11 @@ using std::queue;
 using std::shared_ptr;
 using boost::asio::ip::tcp;
 
+//ºê¶¨Òå
+//²Ù×÷ÃüÁî
+#define CMD_KEEPALIVE 101 
+#define CMD_LOGIN     102
+#define CMD_CHAT      103
+#define CMD_SECRIT    104
+
 #endif //_STDXAFX_H_
