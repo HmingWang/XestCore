@@ -59,16 +59,10 @@
     <ClInclude Include="GameCard.hpp">
       <Filter>源文件\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="DBUtil.hpp">
-      <Filter>源文件\Util</Filter>
-    </ClInclude>
     <ClInclude Include="MsgQueue.hpp">
       <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="ParserX.hpp">
-      <Filter>源文件\control</Filter>
-    </ClInclude>
-    <ClInclude Include="stdxafx.h">
       <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="XString.hpp">
@@ -84,6 +78,15 @@
       <Filter>源文件\Communication</Filter>
     </ClInclude>
     <ClInclude Include="Session.h">
+      <Filter>源文件\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="stdxafx.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DBUtil.hpp">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.hpp">
       <Filter>源文件\Communication</Filter>
     </ClInclude>
   </ItemGroup>

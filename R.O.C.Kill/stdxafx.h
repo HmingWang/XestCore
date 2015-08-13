@@ -13,6 +13,7 @@
 #include<iostream>
 #include<string>
 #include<set>
+#include<map>
 #include<vector>
 #include<queue>
 #include<boost/asio.hpp>
@@ -28,9 +29,13 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::set;
+using std::map;
+using std::pair;
 using std::queue;
 using std::shared_ptr;
 using boost::asio::ip::tcp;
+
+typedef std::shared_ptr<tcp::socket> sptr_Socket;
 
 //ºê¶¨Òå
 //²Ù×÷ÃüÁî

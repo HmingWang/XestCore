@@ -2,20 +2,20 @@
 
 void Session::do_read()
 {
-	boost::asio::async_read_until(socket, rsbuf, '\0', [&](boost::system::error_code ec, size_t t) {
+	boost::asio::async_read_until(*pSocket, rsbuf, '\0', [&](boost::system::error_code ec, size_t t) {
 		if (ec) {
-			std::cout << "[P]Message:==end== " << ec.message() << std::endl;
-			std::cout << "[P]exit" << std::endl;
-			socket.close();
+			std::cout << "[SESS]读取错误: " << ec.message() << std::endl;
+			std::cout << "[SESS]==exit==" << std::endl;
+			pSocket->close();
 			return;
 		}
 		std::ostringstream oss;
 		oss << &rsbuf;
 		std::string msg = oss.str();
-		std::cout << "[P]Message:" << msg << ":" << msg.size() << std::endl;
+		std::cout << "[SESS][" <<getAddress()<<":"<<getPort()<<"]["<< msg.size()<<"]>>>" << msg  << std::endl;
 		//do_write(parser.parserCommand(msg));
 		//sParserX.parserCommand(msg);
-
+		sParserX();
 		do_read();
 
 	});
@@ -24,14 +24,14 @@ void Session::do_read()
 void Session::do_write(string s="")
 {
 	strbuff = s;
-	boost::asio::async_write(socket, boost::asio::buffer(strbuff, strbuff.size()), [&](boost::system::error_code ec, size_t t) {
+	boost::asio::async_write(*pSocket, boost::asio::buffer(strbuff, strbuff.size()), [&](boost::system::error_code ec, size_t t) {
 		if (ec) {
-			std::cout << "[P]写入出错： " << ec.message() << std::endl;
-			std::cout << "[P]exit" << std::endl;
-			socket.close();
+			std::cout << "[SESS]写入出错： " << ec.message() << std::endl;
+			std::cout << "[SESS]exit" << std::endl;
+			pSocket->close();
 			return;
 		}
-		std::cout << "[S]" << strbuff << std::endl;
+		std::cout << "[SESS][" << getAddress()<< ":" << getPort() <<"]<<<"<< strbuff << std::endl;
 	});
 }
 
@@ -42,7 +42,12 @@ int Session::getId()
 
 string Session::getAddress()
 {
-	return socket.remote_endpoint().address().to_string();
+	return pSocket->remote_endpoint().address().to_string();
+}
+
+int Session::getPort() 
+{
+	return pSocket->remote_endpoint().port();
 }
 
 void Session::start()

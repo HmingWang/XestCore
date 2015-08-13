@@ -40,8 +40,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\Program Files\PostgreSQL\9.4\include;D:\boost\boost_1_58_0;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\boost\boost_1_58_0\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Program Files\PostgreSQL\9.4\include;E:\boost\boost_1_58_0;D:\boost\boost_1_58_0;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\boost\boost_1_58_0\stage\lib;D:\boost\boost_1_58_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -81,11 +81,12 @@
     <ClCompile Include="Session.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Command.hpp" />
+    <ClInclude Include="DBUtil.hpp" />
     <ClInclude Include="Desktop.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="XString.hpp" />
-    <ClInclude Include="DBUtil.hpp" />
     <ClInclude Include="GameCard.hpp" />
     <ClInclude Include="IdentityCard.hpp" />
     <ClInclude Include="MsgQueue.hpp" />

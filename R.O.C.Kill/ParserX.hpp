@@ -2,6 +2,7 @@
 #define _PARSER_HPP_
 #include "stdxafx.h"
 #include "Desktop.h"
+#include "Command.hpp"
 
 class ParserX{
 private:
@@ -12,13 +13,13 @@ public:
 		static ParserX instance;
 		return instance;
 	}
-	void parserCommand(String s){
+	void parserCommand(Command cmd){
 		if (sptr_desktop == nullptr) {
 			cout << "±äÁ¿Î´°ó¶¨£º[Desktop]" << endl;
 			return;
 		}
 		vector<String> argVec;
-		argVec = s.Split(":");
+		argVec = cmd.cmdmsg.Split(":");
 		String msgBack = "OK";
 		switch (atoi(argVec.front().c_str()))
 		{
