@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "ParserX.hpp"
 
-Player::Player(tcp::socket& s,int i) :socket(std::move(s)),id(i){
+Player::Player(tcp::socket& s,int i) :socket(std::move(s)), sessionId(i){
 	std::cout << "[P][ID: "<<getId()<<"][IP: " << getAddress() << "]进入房间" << std::endl;
 }
 Player::~Player(){
@@ -63,5 +63,5 @@ void Player::do_write(string s = ""){
 }
 
 int Player::getId(){
-	return id;
+	return sessionId;
 }

@@ -22,17 +22,19 @@ public:
 		String msgBack = "OK";
 		switch (atoi(argVec.front().c_str()))
 		{
-		case 101:
+		case CMD_KEEPALIVE:
 			//通讯保持-业务确认
 			break;
 		case 102:
 			//登陆报文
 			break;
-		case 103:
+		case CMD_CHAT:
 			//聊天
 			//return "chat:" + argVec.back();
 			sptr_desktop->deliver(argVec.back());
 			break;
+		case CMD_SETPLAY:
+
 		default:
 			break;
 		}

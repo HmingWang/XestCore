@@ -24,7 +24,7 @@ public:
 	int getId();
 	
 private:
-	int id;                              //Session id
+	int sessionId;                       //Session id
 	int index;                           //位序
 	vector<GameCard*> handCards;         //手牌区
 	GameCard *equipCards;                //装备区

@@ -15,7 +15,6 @@
 #include<set>
 #include<vector>
 #include<queue>
-#include<boost/algorithm/string.hpp>
 #include<boost/asio.hpp>
 #include<boost/bind.hpp>
 #include "XString.hpp"
@@ -35,9 +34,10 @@ using boost::asio::ip::tcp;
 
 //ºê¶¨Òå
 //²Ù×÷ÃüÁî
-#define CMD_KEEPALIVE 101 
-#define CMD_LOGIN     102
-#define CMD_CHAT      103
-#define CMD_SECRIT    104
+#define CMD_KEEPALIVE   101 
+#define CMD_LOGIN       102
+#define CMD_CHAT        103
+#define CMD_SECRIT      104
+#define CMD_SETPLAY     105
 
 #endif //_STDXAFX_H_

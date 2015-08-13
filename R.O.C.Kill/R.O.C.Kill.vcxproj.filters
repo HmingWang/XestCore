@@ -9,20 +9,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Util">
+    <Filter Include="源文件\Util">
       <UniqueIdentifier>{32cb044c-191a-4314-a4ee-73c601939d64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="skill">
+    <Filter Include="源文件\skill">
       <UniqueIdentifier>{d44ace3c-782e-4085-bec8-af566e1aac34}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Cards">
+    <Filter Include="源文件\control">
+      <UniqueIdentifier>{a72726c6-3251-4f84-b8dd-29b472fd9a33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Cards">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="control">
-      <UniqueIdentifier>{a72726c6-3251-4f84-b8dd-29b472fd9a33}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="communication">
+    <Filter Include="源文件\Communication">
       <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -31,57 +31,60 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Desktop.cpp">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>源文件\Communication</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Util.hpp">
-      <Filter>Util</Filter>
+      <Filter>源文件\Util</Filter>
     </ClInclude>
     <ClInclude Include="ObjectCard.hpp">
-      <Filter>Cards</Filter>
+      <Filter>源文件\Cards</Filter>
     </ClInclude>
     <ClInclude Include="IdentityCard.hpp">
-      <Filter>Cards</Filter>
+      <Filter>源文件\Cards</Filter>
     </ClInclude>
     <ClInclude Include="PowerCard.hpp">
-      <Filter>Cards</Filter>
+      <Filter>源文件\Cards</Filter>
     </ClInclude>
     <ClInclude Include="RoleCard.hpp">
-      <Filter>Cards</Filter>
+      <Filter>源文件\Cards</Filter>
     </ClInclude>
     <ClInclude Include="GameCard.hpp">
-      <Filter>Cards</Filter>
+      <Filter>源文件\Cards</Filter>
     </ClInclude>
     <ClInclude Include="DBUtil.hpp">
-      <Filter>Util</Filter>
+      <Filter>源文件\Util</Filter>
     </ClInclude>
     <ClInclude Include="MsgQueue.hpp">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="ParserX.hpp">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="stdxafx.h">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="XString.hpp">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="Desktop.h">
-      <Filter>control</Filter>
+      <Filter>源文件\control</Filter>
     </ClInclude>
     <ClInclude Include="Server.hpp">
-      <Filter>communication</Filter>
+      <Filter>源文件\Communication</Filter>
     </ClInclude>
-    <ClInclude Include="Session.hpp">
-      <Filter>communication</Filter>
+    <ClInclude Include="Session.h">
+      <Filter>源文件\Communication</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ public:
 	Server();
 	void run();
 	void start();
-	void acceptHandler(std::shared_ptr<tcp::socket>&, boost::system::error_code);
+	
 private:
 	boost::asio::io_service     io_service;
 	boost::system::error_code   error_code;
@@ -28,6 +28,8 @@ private:
 	std::shared_ptr<Player>     sptr_player;
 	set<Session>                Sessions;
 	int                         idseq;
+
+	void acceptHandler(std::shared_ptr<tcp::socket>&, boost::system::error_code);
 };
 
 Server::Server():
