@@ -1,4 +1,6 @@
 #include "Session.h"
+#include "ParserX.hpp"
+#include "Command.hpp"
 
 void Session::do_read()
 {
@@ -15,7 +17,8 @@ void Session::do_read()
 		std::cout << "[SESS][" <<getAddress()<<":"<<getPort()<<"]["<< msg.size()<<"]>>>" << msg  << std::endl;
 		//do_write(parser.parserCommand(msg));
 		//sParserX.parserCommand(msg);
-		sParserX();
+		//sParserX();
+		sParserX.parserCommand(Command(id,msg));
 		do_read();
 
 	});
@@ -54,7 +57,7 @@ void Session::start()
 {
 	do_write(string(
 		"\n====================================================\n") +
-		"================welcome to new world================\n" +
+		"===          十载江湖十载愁 夜风夜雨夜中人          ===\n" +
 		"====================================================\n");
 	do_read();
 }

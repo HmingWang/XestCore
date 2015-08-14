@@ -43,6 +43,6 @@ typedef std::shared_ptr<tcp::socket> sptr_Socket;
 #define CMD_LOGIN       102
 #define CMD_CHAT        103
 #define CMD_SECRIT      104
-#define CMD_SETPLAY     105
+#define CMD_CRTPLAYER   105
 
 #endif //_STDXAFX_H_

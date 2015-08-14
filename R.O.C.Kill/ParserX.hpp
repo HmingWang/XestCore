@@ -15,7 +15,7 @@ public:
 	}
 	void parserCommand(Command cmd){
 		if (sptr_desktop == nullptr) {
-			cout << "变量未绑定：[Desktop]" << endl;
+			cout << "[PARX]变量未绑定：[Desktop]" << endl;
 			return;
 		}
 		vector<String> argVec;
@@ -31,10 +31,10 @@ public:
 			break;
 		case CMD_CHAT:
 			//聊天
-			//return "chat:" + argVec.back();
+			
 			sptr_desktop->deliver(argVec.back());
 			break;
-		case CMD_SETPLAY:
+		case CMD_CRTPLAYER:
 
 		default:
 			break;

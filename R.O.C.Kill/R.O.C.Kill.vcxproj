@@ -86,6 +86,7 @@
     <ClInclude Include="Desktop.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Session.h" />
+    <ClInclude Include="SessionMgr.hpp" />
     <ClInclude Include="XString.hpp" />
     <ClInclude Include="GameCard.hpp" />
     <ClInclude Include="IdentityCard.hpp" />

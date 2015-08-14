@@ -8,6 +8,7 @@
 //#include "Player.h"
 #include "Session.h"
 #include "ParserX.hpp"
+#include "SessionMgr.hpp"
 
 using boost::asio::ip::tcp;
 
@@ -63,8 +64,11 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 	//sptr_player->start();//开始消息循环
 	std::cout << "[SERV]客户端接入：[IP:" << pSocket->remote_endpoint().address()<<"][PORT:"<<pSocket->remote_endpoint().port()<<"]" << std::endl;
 
-	SessionMap.insert(pair<int, Session>(idseq, Session(idseq,pSocket)));
-	SessionMap[idseq++].start();
+	sSessionMgr.insert(idseq,pSocket);
+	sSessionMgr.getSessionByID(idseq).start();
+
+	//SessionMap.insert(pair<int, Session>(idseq, Session(idseq,pSocket)));
+	//SessionMap[idseq++].start();
 	start();
 }
 void Server::run()
