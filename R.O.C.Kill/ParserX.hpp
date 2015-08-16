@@ -2,21 +2,23 @@
 #define _PARSER_HPP_
 #include "stdxafx.h"
 #include "Desktop.h"
+#include "Player.h"
 #include "Command.hpp"
 
 class ParserX{
 private:
 	ParserX() = default;
-	shared_ptr<Desktop> sptr_desktop;
+	sptr_Desktop spDesktop;
+	sptr_Player  spPlayer;
 public:
 	static ParserX& getInstance(){
 		static ParserX instance;
 		return instance;
 	}
 	void parserCommand(Command cmd){
-		if (sptr_desktop == nullptr) {
-			cout << "[PARX]变量未绑定：[Desktop]" << endl;
-			return;
+		if (spDesktop == nullptr) {
+			spDesktop = make_shared<Desktop>();
+			cout << "[PARX]创建房间" << endl;
 		}
 		vector<String> argVec;
 		argVec = cmd.cmdmsg.Split(":");
@@ -32,17 +34,21 @@ public:
 		case CMD_CHAT:
 			//聊天
 			
-			sptr_desktop->deliver(argVec.back());
+			spDesktop->deliver(argVec.back());
 			break;
 		case CMD_CRTPLAYER:
-
+			spPlayer = make_shared<Player>(cmd.sid, argVec.back());
+			spDesktop->join(spPlayer);
+			break;
+		case CMD_CRTDESKTOP:
+			break;
 		default:
 			break;
 		}
 		//return std::move(msgBack);
 	}
 	void setDesktop(shared_ptr<Desktop> p){
-		sptr_desktop = p;
+		spDesktop = p;
 	}
 };
 

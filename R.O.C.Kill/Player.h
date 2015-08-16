@@ -16,10 +16,11 @@ class ParserX;
 class Player
 {
 public:
-	Player(int sid);
+	Player(int sid,string name);
 	~Player();
 
 	Session& getSession();
+	int getID();
 	
 private:
 	int sessionId;                       //Session id
@@ -32,6 +33,6 @@ private:
 	PowerCard *power;                    //ÃÂ¡¶≈∆
 };
 
-
+typedef shared_ptr<Player> sptr_Player;
 
 #endif

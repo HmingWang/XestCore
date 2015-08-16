@@ -3,6 +3,8 @@
 
 #include"stdxafx.h"
 
+typedef std::shared_ptr<tcp::socket> sptr_Socket;
+
 class Session {
 private:
 	sptr_Socket pSocket; //

@@ -33,9 +33,8 @@ using std::map;
 using std::pair;
 using std::queue;
 using std::shared_ptr;
+using std::make_shared;
 using boost::asio::ip::tcp;
-
-typedef std::shared_ptr<tcp::socket> sptr_Socket;
 
 //ºê¶¨Òå
 //²Ù×÷ÃüÁî
@@ -44,5 +43,6 @@ typedef std::shared_ptr<tcp::socket> sptr_Socket;
 #define CMD_CHAT        103
 #define CMD_SECRIT      104
 #define CMD_CRTPLAYER   105
+#define CMD_CRTDESKTOP  106
 
 #endif //_STDXAFX_H_

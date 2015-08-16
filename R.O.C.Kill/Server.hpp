@@ -39,10 +39,8 @@ Server::Server() :
 	idseq(1000),
 	endpoint(tcp::v4(), 1986),
 	socket(io_service),
-	acceptor(io_service, endpoint)//,
-	//sptr_desktop(new Desktop())
+	acceptor(io_service, endpoint)
 {
-	//sParserX.setDesktop(sptr_desktop);
 	std::cout << "[SERV]服务器初始化完成..." << std::endl;
 }
 void Server::start()
@@ -59,16 +57,11 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 		return;
 	}
 
-	//sptr_player = std::make_shared<Player>(*pSocket, idseq++);
-	//sptr_desktop->join(sptr_player);
-	//sptr_player->start();//开始消息循环
 	std::cout << "[SERV]客户端接入：[IP:" << pSocket->remote_endpoint().address()<<"][PORT:"<<pSocket->remote_endpoint().port()<<"]" << std::endl;
 
 	sSessionMgr.insert(idseq,pSocket);
 	sSessionMgr.getSessionByID(idseq).start();
 
-	//SessionMap.insert(pair<int, Session>(idseq, Session(idseq,pSocket)));
-	//SessionMap[idseq++].start();
 	start();
 }
 void Server::run()
