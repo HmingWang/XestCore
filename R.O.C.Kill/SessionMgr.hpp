@@ -5,12 +5,15 @@
 class SessionMgr
 {
 private:
-	map<int, Session> sessionMap;
+	map<int, std::shared_ptr<Session>> sessionMap;
 	SessionMgr() = default;
 public:
-	Session& getSessionByID(int id) { return sessionMap[id]; }
-	bool insert(int id, sptr_Socket psocket) { return sessionMap.insert(pair<int, Session>(id,Session(id,psocket))).second; }
-
+	Session& getSessionByID(int id) { return *sessionMap[id]; }
+	bool insert(int id, sptr_Socket psocket) { return sessionMap.insert(pair<int, std::shared_ptr<Session>>(id,std::make_shared<Session>(id,psocket))).second; }
+	void erase(int id) 
+	{
+		sessionMap.erase(id); 
+	}
 	static SessionMgr& getInstance() {
 		static SessionMgr instance;
 		return instance;

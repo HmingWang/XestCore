@@ -15,6 +15,7 @@ private:
 	string strbuff;                     //写入消息缓冲区
 public:
 	Session() = default;
+	~Session();
 	Session(int id, sptr_Socket ps) :pSocket(ps), id(id) {}
 	Session(Session& s):pSocket(s.pSocket),id(s.id) {}
 	void do_read();
