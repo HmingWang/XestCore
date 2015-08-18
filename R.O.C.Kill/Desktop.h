@@ -12,12 +12,13 @@
 class Desktop
 {
 public:
-	void join(sptr_Player);
-	void leave(sptr_Player);
-	void deliver(string);
-	sptr_Player getPlayerById(int id);
+	void join(int,sptr_Player);
+	void leave(int);
+	void deliver(string msg,int id=0); //给指定ID发送消息，ID=0时广播
+	void frash();                      //刷新房间状态，为每个ID发送当前房间所有人
+	Player& getPlayerById(int id);
 private:
-	std::set<sptr_Player> players; //
+	map<int,sptr_Player> playerMap; //
 	int max_players; //最大人数
 
 };

@@ -37,8 +37,9 @@ public:
 			spDesktop->deliver(argVec.back());
 			break;
 		case CMD_CRTPLAYER:
-			spPlayer = make_shared<Player>(cmd.sid, argVec.back());
-			spDesktop->join(spPlayer);
+			argVec = argVec.back().Split(";");
+			spPlayer = make_shared<Player>(cmd.sid, argVec.front(),argVec.back()=="True");
+			spDesktop->join(cmd.sid,spPlayer);
 			break;
 		case CMD_CRTDESKTOP:
 			break;

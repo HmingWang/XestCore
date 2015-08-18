@@ -4,8 +4,13 @@
 
 Session::~Session()
 {
-	cout << "Session析构：" << id << endl;
+	cout << "[SESS][ID:" << id<<"]关闭会话" << endl;
 	pSocket->close();
+}
+
+Session::Session(int id, sptr_Socket ps) :pSocket(ps), id(id)
+{
+	cout << "[SESS][ID:" << id << "]创建会话" << endl;
 }
 
 void Session::do_read()
@@ -39,6 +44,7 @@ void Session::do_write(string s="")
 			std::cout << "[SESS]写入出错： " << ec.message() << std::endl;
 			//std::cout << "[SESS]exit" << std::endl;
 			//pSocket->close();
+
 			return;
 		}
 		std::cout << "[SESS][" << getAddress()<< ":" << getPort() <<"]<<<"<< strbuff << std::endl;
@@ -62,12 +68,6 @@ int Session::getPort()
 
 void Session::start()
 {
-	do_write(string(
-		"\n====================================================\n") +
-		"===        天下风云出我辈， 一入江湖岁月催；     ===\n" +
-		"===        皇图霸业谈笑间， 不胜人生一场醉。     ===\n" +
-		"===        提剑跨骑挥鬼雨， 白骨如山鸟惊飞；     ===\n" +
-		"===        尘事如潮人如水， 只叹江湖几人回。     ===\n" +
-		"====================================================\n");
+	do_write(cstr_login);
 	do_read();
 }

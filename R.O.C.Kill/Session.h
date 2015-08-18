@@ -16,7 +16,7 @@ private:
 public:
 	Session() = default;
 	~Session();
-	Session(int id, sptr_Socket ps) :pSocket(ps), id(id) {}
+	Session(int id, sptr_Socket ps);
 	Session(Session& s):pSocket(s.pSocket),id(s.id) {}
 	void do_read();
 	void do_write(string);

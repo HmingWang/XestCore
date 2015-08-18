@@ -16,7 +16,7 @@ class ParserX;
 class Player
 {
 public:
-	Player(int sid,string name);
+	Player(int sid,string name,bool sex=true);
 	~Player();
 
 	Session& getSession();
@@ -25,6 +25,7 @@ public:
 private:
 	int sessionId;                       //Session id
 	string name;                         //名称
+	bool sex;                            //性别  true :man  false: woman
 
 	vector<GameCard*> handCards;         //手牌区
 	GameCard *equipCards;                //装备区
