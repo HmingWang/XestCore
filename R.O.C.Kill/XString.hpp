@@ -8,16 +8,10 @@
 class XString :public std::string
 {
 public:
-
 	XString():std::string(),Length(length()){}
 	XString(const char* str) :std::string(str), Length(length()){}
 	XString(std::string str) :std::string(str), Length(length()){}
-	XString(long dec){ 
-		std::stringstream ss;
-		ss << dec;
-		std::string s;
-		XString(s);
-	}
+
 	XString& Trim(std::string trimChars = " "){
 		if (trimChars.empty()) trimChars=" ";
 		return TrimHelper(trimChars,TrimBoth);
@@ -77,6 +71,12 @@ public:
 		}
 		strVec.push_back(substr);
 		return std::move(strVec);
+	}
+
+	XString FromInt(int i) {
+		std::stringstream ss;
+		ss << i;
+		return ss.str();
 	}
 
 

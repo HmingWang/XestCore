@@ -7,7 +7,7 @@ void Desktop::join(int id ,sptr_Player p)
 	std::cout << "[DESK][当前人数]:" << playerMap.size() << std::endl;
 	
 	//广播
-	string cmd = String(PUSH_PLAYER);
+	string cmd = String().FromInt(PUSH_PLAYER)+":";
 	for (auto m :playerMap)
 	{
 		cmd += m.second->getName() + "," + m.second->getSex() + ";";
