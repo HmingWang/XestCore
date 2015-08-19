@@ -44,8 +44,9 @@ using boost::asio::ip::tcp;
 #define CMD_SECRIT      104
 #define CMD_CRTPLAYER   105
 #define CMD_CRTDESKTOP  106
+#define CMD_REFRESH     107
 //ÍÆËÍ
-#define PUSH_PLAYER     107
+#define PUSH_PLAYER     201
 
 //×Ö·û´®³£Á¿
 const string cstr_login = string(

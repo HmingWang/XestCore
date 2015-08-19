@@ -18,6 +18,7 @@ public:
 	~Session();
 	Session(int id, sptr_Socket ps);
 	Session(Session& s):pSocket(s.pSocket),id(s.id) {}
+	bool isConnected();
 	void do_read();
 	void do_write(string);
 	int getId();

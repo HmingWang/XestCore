@@ -25,9 +25,6 @@ private:
 	tcp::endpoint               endpoint;
 	tcp::socket                 socket;
 	tcp::acceptor               acceptor;
-	//std::shared_ptr<Desktop>    sptr_desktop;
-	//std::shared_ptr<Player>     sptr_player;
-	//set<Session>                Sessions;
 	map<int, Session>            SessionMap;
 	int                         idseq;
 

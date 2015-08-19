@@ -28,21 +28,22 @@ public:
 		case CMD_KEEPALIVE:
 			//通讯保持-业务确认
 			break;
-		case 102:
+		case CMD_LOGIN:
 			//登陆报文
 			break;
 		case CMD_CHAT:
 			//聊天
-			
 			spDesktop->deliver(argVec.back());
 			break;
 		case CMD_CRTPLAYER:
 			argVec = argVec.back().Split(";");
-			spPlayer = make_shared<Player>(cmd.sid, argVec.front(),argVec.back()=="True");
+			spPlayer = make_shared<Player>(cmd.sid, argVec.front(),argVec.back().compare("True")==0);
 			spDesktop->join(cmd.sid,spPlayer);
 			break;
 		case CMD_CRTDESKTOP:
 			break;
+		case CMD_REFRESH:
+			spDesktop->refrash();
 		default:
 			break;
 		}

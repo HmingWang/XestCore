@@ -13,6 +13,11 @@ Session::Session(int id, sptr_Socket ps) :pSocket(ps), id(id)
 	cout << "[SESS][ID:" << id << "]创建会话" << endl;
 }
 
+bool Session::isConnected()
+{
+	return this->pSocket->is_open();
+}
+
 void Session::do_read()
 {
 	boost::asio::async_read_until(*pSocket, rsbuf, '\0', [&](boost::system::error_code ec, size_t t) {
