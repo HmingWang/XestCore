@@ -1,19 +1,22 @@
 #ifndef _CSTRING_HPP_
 #define _CSTRING_HPP_
 #include <iostream>
+#include <sstream>
 #include <string>
+#include <vector>
 
-class XString :public std::string{
-
+class XString :public std::string
+{
 public:
-	int Length;
+
 	XString():std::string(),Length(length()){}
 	XString(const char* str) :std::string(str), Length(length()){}
 	XString(std::string str) :std::string(str), Length(length()){}
 	XString(long dec){ 
 		std::stringstream ss;
 		ss << dec;
-		XString(ss.str());
+		std::string s;
+		XString(s);
 	}
 	XString& Trim(std::string trimChars = " "){
 		if (trimChars.empty()) trimChars=" ";
@@ -76,10 +79,14 @@ public:
 		return std::move(strVec);
 	}
 
+
 private:
 	const int TrimHead = 0;
 	const int TrimTail = 1;
 	const int TrimBoth = 2;
+
+	std::string m_strData;
+	int Length;
 
 };
 

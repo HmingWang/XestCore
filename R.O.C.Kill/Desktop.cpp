@@ -5,6 +5,14 @@ void Desktop::join(int id ,sptr_Player p)
 {
 	playerMap.insert(make_pair(id,p));
 	std::cout << "[DESK][当前人数]:" << playerMap.size() << std::endl;
+	
+	//广播
+	string cmd = String(PUSH_PLAYER);
+	for (auto m :playerMap)
+	{
+		cmd += m.second->getName() + "," + m.second->getSex() + ";";
+	}
+	deliver(cmd);
 }
 void Desktop::leave(int id){
 

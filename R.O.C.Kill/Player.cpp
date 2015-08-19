@@ -17,3 +17,13 @@ int Player::getID()
 {
 	return sessionId;
 }
+
+string Player::getName()
+{
+	return this->name;
+}
+
+string Player::getSex()
+{
+	return this->sex ? "ÄÐ" : "Å®";
+}

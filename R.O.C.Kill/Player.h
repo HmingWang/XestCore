@@ -21,6 +21,8 @@ public:
 
 	Session& getSession();
 	int getID();
+	string getName();
+	string getSex();
 	
 private:
 	int sessionId;                       //Session id
