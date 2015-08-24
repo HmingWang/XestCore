@@ -15,7 +15,9 @@ public:
 	Session& getSessionByID(int id) { return *sessionMap[id]; }
 	bool insert(int id, sptr_Socket psocket)
 	{
-		return sessionMap.emplace(id, std::make_shared<Session>(id, psocket)).second;
+		sptr_Session spSession = std::make_shared<Session>(id, psocket);
+		std::pair<int, sptr_Session> p = std::make_pair(id, spSession);
+		return sessionMap.emplace(p).second;
 		//return sessionMap.insert(make_pair(id, std::make_shared<Session>(id, psocket))).second;
 	}
 	void erase(int id) 
