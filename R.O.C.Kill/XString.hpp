@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#define __STDC_LIMIT_MACROS //g++ INT_MAX 
+#include <cstdint>
 
 
 
