@@ -1,6 +1,6 @@
 //#pragma once
-#ifndef _STDXAFX_H_
-#define _STDXAFX_H_
+#ifndef _COMMAND_H_
+#define _COMMAND_H_
 
 #include "stdxafx.h"
 class Command
