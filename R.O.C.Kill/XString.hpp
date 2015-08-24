@@ -1,9 +1,12 @@
-#ifndef _CSTRING_HPP_
-#define _CSTRING_HPP_
+#ifndef _XSTRING_HPP_
+#define _XSTRING_HPP_
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+#define __STDC_LIMIT_MACROS //g++ INT_MAX 
+
+
 
 class XString :public std::string
 {
