@@ -6,8 +6,6 @@
 #include <vector>
 #include <cstdint>
 
-
-
 class XString :public std::string
 {
 public:
@@ -58,7 +56,7 @@ public:
 		if (start != this->begin()) this->erase(this->begin(), start);
 		return *this;
 	}
-	std::vector<XString> Split(std::string separator,int count=INT_MAX){
+	std::vector<XString> Split(std::string separator,int count= std::numeric_limits<std::int32_t>::max()){
 		std::vector<XString> strVec;
 		std::string substr = *this;
 		std::string strItem;
