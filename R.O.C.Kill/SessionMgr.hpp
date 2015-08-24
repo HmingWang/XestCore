@@ -31,7 +31,12 @@ public:
 
 	void SendTo(int nId, string strMsg) 
 	{
-	
+		getSessionByID(nId).do_write(strMsg);
+	}
+
+	void RecieveFrom(int nId) 
+	{
+		getSessionByID(nId).do_read();
 	}
 
 
