@@ -4,75 +4,72 @@
 
 Session::~Session()
 {
-	cout << "[SESS][ID:" << id<<"]关闭会话" << endl;
-	pSocket->close();
+	cout << "[SESS][" << getAddress() << ":" << getPort() << "]关闭会话" << endl;
+	m_spSocket->close();
 }
 
-Session::Session(int id, sptr_Socket ps) :pSocket(ps), id(id)
+Session::Session(sptr_Socket ps):m_spSocket(ps)
 {
-	cout << "[SESS][ID:" << id << "]创建会话" << endl;
+	cout << "[SESS][" << getAddress() << ":" << getPort() << "]创建会话" << endl;
 }
 
 bool Session::isConnected()
 {
-	return this->pSocket!=nullptr&&this->pSocket->is_open();
+	return this->m_spSocket !=nullptr&&this->m_spSocket->is_open();
 }
 
-void Session::do_read()
+void Session::do_read() throw()
 {
-	boost::asio::async_read_until(*pSocket, rsbuf, '\0', [&](boost::system::error_code ec, size_t t) {
+	boost::asio::async_read_until(*m_spSocket, m_ReadBuffer, '\0', [&](boost::system::error_code ec, size_t t) {
 		if (ec) {
 			std::cout << "[SESS]读取错误: " << ec.message() << std::endl;
+			throw ec.message();
 			//std::cout << "[SESS]==exit==" << std::endl;
-			//pSocket->close();
-			sSessionMgr.erase(id);
+			//m_spSocket->close();
+			//sSessionMgr.erase(id);
 			return;
 		}
 		std::ostringstream oss;
-		oss << &rsbuf;
+		oss << &m_ReadBuffer;
 		std::string msg = oss.str();
 		std::cout << "[SESS][" <<getAddress()<<":"<<getPort()<<"]["<< msg.size()<<"]>>>" << msg  << std::endl;
 		//do_write(parser.parserCommand(msg));
 		//sParserX.parserCommand(msg);
 		//sParserX();
-		sParserX.parserCommand(Command(id,msg));
+		//sParserX.parserCommand(Command(id,msg));
 		do_read();
 
 	});
 }
 
-void Session::do_write(string s="")
+void Session::do_write(string strMsg="") throw()
 {
-	strbuff = s;
-	boost::asio::async_write(*pSocket, boost::asio::buffer(strbuff, strbuff.size()), [&](boost::system::error_code ec, size_t t) {
+	m_WriteBuffer = strMsg;
+	boost::asio::async_write(*m_spSocket, boost::asio::buffer(m_WriteBuffer, m_WriteBuffer.size()), [&](boost::system::error_code ec, size_t t) {
 		if (ec) {
 			std::cout << "[SESS]写入出错： " << ec.message() << std::endl;
+			throw ec.message();
 			//std::cout << "[SESS]exit" << std::endl;
-			//pSocket->close();
+			//m_spSocket->close();
 
 			return;
 		}
-		std::cout << "[SESS][" << getAddress()<< ":" << getPort() <<"]<<<"<< strbuff << std::endl;
+		std::cout << "[SESS][" << getAddress()<< ":" << getPort() <<"]<<<"<< m_WriteBuffer << std::endl;
 	});
-}
-
-int Session::getId()
-{
-	return id;
 }
 
 string Session::getAddress()
 {
-	return pSocket->remote_endpoint().address().to_string();
+	return m_spSocket->remote_endpoint().address().to_string();
 }
 
 int Session::getPort() 
 {
-	return pSocket->remote_endpoint().port();
+	return m_spSocket->remote_endpoint().port();
 }
 
 void Session::start()
 {
-	do_write(cstr_login);
+	//do_write(cstr_login);
 	do_read();
 }

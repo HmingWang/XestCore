@@ -56,7 +56,7 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 
 	std::cout << "[SERV]客户端接入：[IP:" << pSocket->remote_endpoint().address()<<"][PORT:"<<pSocket->remote_endpoint().port()<<"]" << std::endl;
 
-	sSessionMgr.insert(idseq,pSocket);
+	sSessionMgr.emplace(idseq,pSocket);
 	sSessionMgr.getSessionByID(idseq++).start();
 
 	start();

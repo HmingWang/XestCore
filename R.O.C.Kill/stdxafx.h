@@ -16,6 +16,7 @@
 #include<map>
 #include<vector>
 #include<queue>
+#include<exception>
 #include<boost/asio.hpp>
 #include<boost/bind.hpp>
 #include "XString.hpp"
@@ -34,6 +35,7 @@ using std::pair;
 using std::queue;
 using std::shared_ptr;
 using std::make_shared;
+using std::exception;
 using boost::asio::ip::tcp;
 
 //∫Í∂®“Â

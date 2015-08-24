@@ -7,22 +7,17 @@ typedef std::shared_ptr<tcp::socket> sptr_Socket;
 
 class Session {
 private:
-	sptr_Socket pSocket; //
-	int id;
+	sptr_Socket m_spSocket;                //Socket
 
 	boost::asio::streambuf wsbuf;       //写入消息缓冲区//x
-	boost::asio::streambuf rsbuf;       //读取消息缓冲区
-	string strbuff;                     //写入消息缓冲区
+	boost::asio::streambuf m_ReadBuffer;       //读取消息缓冲区
+	string m_WriteBuffer;                     //写入消息缓冲区
 public:
-	Session() = default;
 	~Session();
-	Session(int id, sptr_Socket ps);
-	Session(Session&) = delete;
-	//Session(Session& s):pSocket(s.pSocket),id(s.id) {}
+	Session(sptr_Socket ps);
 	bool isConnected();
 	void do_read();
 	void do_write(string);
-	int getId();
 	string getAddress();
 	int getPort();
 	void start();                       //开始消息循环
