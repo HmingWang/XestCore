@@ -4,14 +4,20 @@
 #include "stdxafx.h"
 #include "Session.h"
 
+typedef std::shared_ptr<Session> sptr_Session;
+
 class SessionMgr
 {
 private:
-	map<int, std::shared_ptr<Session>> sessionMap;
+	map<int, sptr_Session> sessionMap;
 	SessionMgr() = default;
 public:
 	Session& getSessionByID(int id) { return *sessionMap[id]; }
-	bool insert(int id, sptr_Socket psocket) { return sessionMap.insert(make_pair(id,std::make_shared<Session>(id,psocket))).second; }
+	bool insert(int id, sptr_Socket psocket)
+	{
+		return sessionMap.emplace(id, std::make_shared<Session>(id, psocket)).second;
+		//return sessionMap.insert(make_pair(id, std::make_shared<Session>(id, psocket))).second;
+	}
 	void erase(int id) 
 	{
 		sessionMap.erase(id); 
