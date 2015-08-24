@@ -1,4 +1,6 @@
-#pragma once
+//#pragma once
+#ifndef _SESSIONMGR_HPP_
+#define _SESSIONMGR_HPP_
 #include "stdxafx.h"
 #include "Session.h"
 
@@ -22,3 +24,5 @@ public:
 };
 
 #define sSessionMgr SessionMgr::getInstance()
+
+#endif

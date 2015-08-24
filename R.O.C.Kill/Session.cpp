@@ -15,7 +15,7 @@ Session::Session(int id, sptr_Socket ps) :pSocket(ps), id(id)
 
 bool Session::isConnected()
 {
-	return this->pSocket->is_open();
+	return this->pSocket!=nullptr&&this->pSocket->is_open();
 }
 
 void Session::do_read()

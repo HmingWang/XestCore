@@ -1,4 +1,6 @@
-#pragma once
+//#pragma once
+#ifndef _STDXAFX_H_
+#define _STDXAFX_H_
 
 #include "stdxafx.h"
 class Command
@@ -9,3 +11,4 @@ public:
 	String cmdmsg;
 };
 
+#endif

@@ -92,13 +92,5 @@
     <ClInclude Include="SessionMgr.hpp">
       <Filter>源文件\Communication</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>源文件\Cards</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="XestCore.rc">
-      <Filter>资源文件</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
