@@ -18,7 +18,7 @@ public:
 	void parserCommand(Command cmd){
 		if (spDesktop == nullptr) {
 			spDesktop = make_shared<Desktop>();
-			cout << "[PARX]创建房间" << endl;
+			cout << "[PARX]鍒涘缓鎴块棿" << endl;
 		}
 		vector<String> argVec;
 		argVec = cmd.cmdmsg.Split(":");
@@ -26,13 +26,13 @@ public:
 		switch (atoi(argVec.front().c_str()))
 		{
 		case CMD_KEEPALIVE:
-			//通讯保持-业务确认
+			//閫氳淇濇寔-涓氬姟纭
 			break;
 		case CMD_LOGIN:
-			//登陆报文
+			//鐧婚檰鎶ユ枃
 			break;
 		case CMD_CHAT:
-			//聊天
+			//鑱婂ぉ
 			spDesktop->deliver(argVec.back());
 			break;
 		case CMD_CRTPLAYER:

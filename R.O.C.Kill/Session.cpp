@@ -4,13 +4,13 @@
 
 Session::~Session()
 {
-	cout << "[SESS][" << getAddress() << ":" << getPort() << "]¹Ø±Õ»á»°" << endl;
+	cout << "[SESS][" << getAddress() << ":" << getPort() << "]å…³é—­ä¼šè¯" << endl;
 	m_spSocket->close();
 }
 
 Session::Session(sptr_Socket ps):m_spSocket(ps)
 {
-	cout << "[SESS][" << getAddress() << ":" << getPort() << "]´´½¨»á»°" << endl;
+	cout << "[SESS][" << getAddress() << ":" << getPort() << "]åˆ›å»ºä¼šè¯" << endl;
 }
 
 bool Session::isConnected()
@@ -22,7 +22,7 @@ void Session::do_read() throw()
 {
 	boost::asio::async_read_until(*m_spSocket, m_ReadBuffer, '\0', [&](boost::system::error_code ec, size_t t) {
 		if (ec) {
-			std::cout << "[SESS]¶ÁÈ¡´íÎó: " << ec.message() << std::endl;
+			std::cout << "[SESS]è¯»å–é”™è¯¯: " << ec.message() << std::endl;
 			throw ec.message();
 			//std::cout << "[SESS]==exit==" << std::endl;
 			//m_spSocket->close();
@@ -47,7 +47,7 @@ void Session::do_write(string strMsg="") throw()
 	m_WriteBuffer = strMsg;
 	boost::asio::async_write(*m_spSocket, boost::asio::buffer(m_WriteBuffer, m_WriteBuffer.size()), [&](boost::system::error_code ec, size_t t) {
 		if (ec) {
-			std::cout << "[SESS]Ð´Èë³ö´í£º " << ec.message() << std::endl;
+			std::cout << "[SESS]å†™å…¥å‡ºé”™ï¼š " << ec.message() << std::endl;
 			throw ec.message();
 			//std::cout << "[SESS]exit" << std::endl;
 			//m_spSocket->close();

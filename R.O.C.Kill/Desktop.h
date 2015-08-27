@@ -1,5 +1,5 @@
 //==================================
-//ÅÆ×À
+//ç‰Œæ¡Œ
 //==================================
 
 #ifndef _DESSKTOP_H_
@@ -14,12 +14,12 @@ class Desktop
 public:
 	void join(int,sptr_Player);
 	void leave(int);
-	void deliver(string msg,int id=0);     //¸øÖ¸¶¨ID·¢ËÍÏûÏ¢£¬ID=0Ê±¹ã²¥
-	void refrash();                        //Ë¢ĞÂ·¿¼ä×´Ì¬£¬ÎªÃ¿¸öID·¢ËÍµ±Ç°·¿¼äËùÓĞÈË
+	void deliver(string msg,int id=0);     //ç»™æŒ‡å®šIDå‘é€æ¶ˆæ¯ï¼ŒID=0æ—¶å¹¿æ’­
+	void refrash();                        //åˆ·æ–°æˆ¿é—´çŠ¶æ€ï¼Œä¸ºæ¯ä¸ªIDå‘é€å½“å‰æˆ¿é—´æ‰€æœ‰äºº
 	Player& getPlayerById(int id);
 private:
 	map<int,sptr_Player> playerMap; //
-	int max_players; //×î´óÈËÊı
+	int max_players; //æœ€å¤§äººæ•°
 
 };
 

@@ -38,11 +38,11 @@ Server::Server() :
 	socket(io_service),
 	acceptor(io_service, endpoint)
 {
-	std::cout << "[SERV]·þÎñÆ÷³õÊ¼»¯Íê³É..." << std::endl;
+	std::cout << "[SERV]æœåŠ¡å™¨åˆå§‹åŒ–å®Œæˆ..." << std::endl;
 }
 void Server::start()
 {
-	std::cout << "[SERV]µÈ´ý¿Í»§¶Ë½ÓÈë..." << std::endl;
+	std::cout << "[SERV]ç­‰å¾…å®¢æˆ·ç«¯æŽ¥å…¥..." << std::endl;
 	auto pSocket = std::make_shared<tcp::socket>(io_service);
 	acceptor.async_accept(*pSocket, boost::bind(&Server::acceptHandler, this, pSocket, this->error_code));
 }
@@ -50,11 +50,11 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 {
 	if (ec)
 	{
-		std::cout << "[SERV]Á¬½Ó´íÎó£º" << ec.message() << std::endl;
+		std::cout << "[SERV]è¿žæŽ¥é”™è¯¯ï¼š" << ec.message() << std::endl;
 		return;
 	}
 
-	std::cout << "[SERV]¿Í»§¶Ë½ÓÈë£º[IP:" << pSocket->remote_endpoint().address()<<"][PORT:"<<pSocket->remote_endpoint().port()<<"]" << std::endl;
+	std::cout << "[SERV]å®¢æˆ·ç«¯æŽ¥å…¥ï¼š[IP:" << pSocket->remote_endpoint().address()<<"][PORT:"<<pSocket->remote_endpoint().port()<<"]" << std::endl;
 
 	sSessionMgr.emplace(idseq,pSocket);
 	sSessionMgr.getSessionByID(idseq++).start();
