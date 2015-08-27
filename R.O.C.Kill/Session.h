@@ -16,8 +16,8 @@ public:
 	~Session();
 	Session(sptr_Socket ps);
 	bool isConnected();
-	void do_read();
-	void do_write(string);
+	void do_read() throw();
+	void do_write(string) throw();
 	string getAddress();
 	int getPort();
 	void start();                       //开始消息循环
