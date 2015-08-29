@@ -1,4 +1,4 @@
-#ifndef _PARSER_HPP_
+﻿#ifndef _PARSER_HPP_
 #define _PARSER_HPP_
 #include "stdxafx.h"
 #include "Desktop.h"
