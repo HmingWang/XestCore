@@ -53,7 +53,7 @@ public:
 			}
 		}
 
-		if (end != this->end())   this->erase(end, this->end());        //å…ˆåˆ é™¤ç»“å°¾
+		if (end != this->end())   this->erase(end, this->end());        //ÏÈÉ¾³ı½áÎ²
 		if (start != this->begin()) this->erase(this->begin(), start);
 		return *this;
 	}

@@ -35,12 +35,13 @@ void Desktop::refrash()
 	deliver(cmd);
 }
 
-Player& Desktop::getPlayerById(int id){
+sptr_Player Desktop::getPlayerById(int id){
 	for (auto p: playerMap)
 	{
 		if (p.second->getID()==id)
 		{
-			return *p.second;
+			return p.second;
 		}
 	}
+	return nullptr;
 }

@@ -2,11 +2,11 @@
 #include "ParserX.hpp"
 
 Player::Player(int id,string name,bool sex) : sessionId(id),name(name),sex(sex){
-	string sextype = sex ? "[ç”·]" : "[å¥³]";
-	std::cout << "[PLAY][ID: "<< sessionId <<"]" << "åˆ›å»ºè§’è‰² åç§°["<<name<<"]"<< sextype << std::endl;
+	string sextype = sex ? "[ÄÐ]" : "[Å®]";
+	std::cout << "[PLAY][ID: "<< sessionId <<"]" << "´´½¨½ÇÉ« Ãû³Æ["<<name<<"]"<< sextype << std::endl;
 }
 Player::~Player(){
-	std::cout << "[PLAY][ID: " << sessionId << "]" << "æ³¨é”€è§’è‰² åç§°[" << name << "]" << std::endl;
+	std::cout << "[PLAY][ID: " << sessionId << "]" << "×¢Ïú½ÇÉ« Ãû³Æ[" << name << "]" << std::endl;
 }
 
 Session& Player::getSession(){
@@ -25,5 +25,5 @@ string Player::getName()
 
 string Player::getSex()
 {
-	return this->sex ? "ç”·" : "å¥³";
+	return this->sex ? "ÄÐ" : "Å®";
 }
