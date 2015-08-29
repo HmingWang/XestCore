@@ -25,6 +25,9 @@
     <Filter Include="源文件\Communication">
       <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="脚本">
+      <UniqueIdentifier>{23cd633f-7204-48e6-8c41-1eccd96276bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -92,5 +95,10 @@
     <ClInclude Include="SessionMgr.hpp">
       <Filter>源文件\Communication</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.sh">
+      <Filter>脚本</Filter>
+    </None>
   </ItemGroup>
 </Project>

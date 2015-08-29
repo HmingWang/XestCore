@@ -1,4 +1,4 @@
-//#pragma once
+﻿//#pragma once
 #ifndef _SESSIONMGR_HPP_
 #define _SESSIONMGR_HPP_
 #include "stdxafx.h"
@@ -12,7 +12,7 @@ private:
 	map<int, sptr_Session> m_SessionsMap;
 	SessionMgr() = default;
 public:
-	Session& getSessionByID(int id) { return *m_SessionsMap[id]; }
+	sptr_Session getSessionByID(int id) { return m_SessionsMap[id]; }
 
 	static SessionMgr& getInstance()
 	{
@@ -22,21 +22,23 @@ public:
 
 	bool emplace(int id, sptr_Socket psocket)
 	{
-		return m_SessionsMap.emplace(id,std::make_shared<Session>(psocket)).second;
+		cout << "[SMGR]创建会话[ID:" << id << "]" << endl;
+		return m_SessionsMap.emplace(id,std::make_shared<Session>(id,psocket)).second;
 	}
 	void erase(int id) 
 	{
+		cout << "[SMGR]删除会话[ID:" << id << "]" << endl;
 		m_SessionsMap.erase(id);
 	}
 
 	void SendTo(int nId, string strMsg) 
 	{
-		getSessionByID(nId).do_write(strMsg);
+		getSessionByID(nId)->do_write(strMsg);
 	}
 
 	void RecieveFrom(int nId) 
 	{
-		getSessionByID(nId).do_read();
+		getSessionByID(nId)->do_read();
 	}
 
 

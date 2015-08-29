@@ -15,13 +15,13 @@ void Desktop::leave(int id){
 void Desktop::deliver(string msg,int id){
 	if (id == 0) {
 		for (auto p : playerMap) {
-			if(p.second->getSession().isConnected())
-				p.second->getSession().do_write(msg);
+			if(p.second->getSession()->isConnected())
+				p.second->getSession()->do_write(msg);
 		}
 	}
 	else {
-		if (playerMap[id]->getSession().isConnected())
-			playerMap[id]->getSession().do_write(msg);
+		if (playerMap[id]->getSession()->isConnected())
+			playerMap[id]->getSession()->do_write(msg);
 	}
 }
 

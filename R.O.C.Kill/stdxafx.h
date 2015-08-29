@@ -40,6 +40,7 @@ using boost::asio::ip::tcp;
 
 //ºê¶¨Òå
 //²Ù×÷ÃüÁî
+#define CMD_ECHO        100
 #define CMD_KEEPALIVE   101 
 #define CMD_LOGIN       102
 #define CMD_CHAT        103

@@ -57,13 +57,22 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 	std::cout << "[SERV]客户端接入：[IP:" << pSocket->remote_endpoint().address()<<"][PORT:"<<pSocket->remote_endpoint().port()<<"]" << std::endl;
 
 	sSessionMgr.emplace(idseq,pSocket);
-	sSessionMgr.getSessionByID(idseq++).start();
+	sSessionMgr.getSessionByID(idseq)->start();
+	sSessionMgr.SendTo(idseq++, cstr_login);
 
 	start();
 }
 void Server::run()
 {
-	io_service.run();
+	try 
+	{
+		io_service.run();
+	}
+	catch (...)
+	{
+		cout << "[SERV]IOSERVICE异常，程序重启" << endl;
+		io_service.run();
+	}
 }
 
 #endif

@@ -9,7 +9,7 @@ Player::~Player(){
 	std::cout << "[PLAY][ID: " << sessionId << "]" << "注销角色 名称[" << name << "]" << std::endl;
 }
 
-Session& Player::getSession(){
+sptr_Session Player::getSession(){
 	return sSessionMgr.getSessionByID(sessionId);
 }
 

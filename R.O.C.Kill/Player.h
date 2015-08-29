@@ -19,7 +19,7 @@ public:
 	Player(int sid,string name,bool sex=true);
 	~Player();
 
-	Session& getSession();
+	sptr_Session getSession();
 	int getID();
 	string getName();
 	string getSex();

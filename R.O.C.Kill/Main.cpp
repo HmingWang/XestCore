@@ -18,9 +18,6 @@ int main()
 	cout << "WIN32" << endl;
 #endif
 
-
-
-
 	Server s;
 	s.start();
 	s.run();
