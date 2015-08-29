@@ -64,15 +64,9 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 }
 void Server::run()
 {
-	try 
-	{
-		io_service.run();
-	}
-	catch (...)
-	{
-		cout << "[SERV]IOSERVICE异常，程序重启" << endl;
-		io_service.run();
-	}
+
+	io_service.run();
+
 }
 
 #endif

@@ -21,12 +21,12 @@ public:
 			cout << "[PARX]创建房间" << endl;
 		}
 		vector<String> argVec;
-		argVec = cmd.cmdmsg.Split(":");
+		argVec = cmd.GetMessage().Split(":");
 		String msgBack = "OK";
 		switch (atoi(argVec.front().c_str()))
 		{
 		case CMD_ECHO:
-			sSessionMgr.SendTo(cmd.sid, cmd.cmdmsg);
+			sSessionMgr.SendTo(cmd.GetSessionID(), cmd.GetMessage());
 			break;
 		case CMD_KEEPALIVE:
 			//通讯保持-业务确认
@@ -40,15 +40,15 @@ public:
 			break;
 		case CMD_CRTPLAYER:
 			argVec = argVec.back().Split(";");
-			spPlayer = make_shared<Player>(cmd.sid, argVec.front(),argVec.back().compare("True")==0);
-			spDesktop->join(cmd.sid,spPlayer);
+			spPlayer = make_shared<Player>(cmd.GetSessionID(), argVec.front(),argVec.back().compare("True")==0);
+			spDesktop->join(cmd.GetSessionID(),spPlayer);
 			break;
 		case CMD_CRTDESKTOP:
 			break;
 		case CMD_REFRESH:
 			spDesktop->refrash();
 		default:
-			sSessionMgr.SendTo(cmd.sid, cmd.cmdmsg);
+			sSessionMgr.SendTo(cmd.GetSessionID(), cmd.GetMessage());
 			break;
 		}
 		//return std::move(msgBack);
