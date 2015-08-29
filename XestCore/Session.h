@@ -9,9 +9,9 @@ class Session {
 private:
 	sptr_Socket m_spSocket;                //Socket
 
-	boost::asio::streambuf wsbuf;       //Ğ´ÈëÏûÏ¢»º³åÇø//x
-	boost::asio::streambuf m_ReadBuffer;       //¶ÁÈ¡ÏûÏ¢»º³åÇø
-	string m_WriteBuffer;                     //Ğ´ÈëÏûÏ¢»º³åÇø
+	boost::asio::streambuf wsbuf;       //å†™å…¥æ¶ˆæ¯ç¼“å†²åŒº//x
+	boost::asio::streambuf m_ReadBuffer;       //è¯»å–æ¶ˆæ¯ç¼“å†²åŒº
+	string m_WriteBuffer;                     //å†™å…¥æ¶ˆæ¯ç¼“å†²åŒº
 public:
 	~Session();
 	Session(sptr_Socket ps);
@@ -20,7 +20,7 @@ public:
 	void do_write(string) throw();
 	string getAddress();
 	int getPort();
-	void start();                       //¿ªÊ¼ÏûÏ¢Ñ­»·
+	void start();                       //å¼€å§‹æ¶ˆæ¯å¾ªç¯
 };
 
 #endif // !_SESSION_HPP_

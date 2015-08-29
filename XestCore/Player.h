@@ -1,5 +1,5 @@
 //============================
-//Íæ¼Ò
+//ç©å®¶
 //============================
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
@@ -26,14 +26,14 @@ public:
 	
 private:
 	int sessionId;                       //Session id
-	string name;                         //Ãû³Æ
-	bool sex;                            //ĞÔ±ğ  true :man  false: woman
+	string name;                         //åç§°
+	bool sex;                            //æ€§åˆ«  true :man  false: woman
 
-	vector<GameCard*> handCards;         //ÊÖÅÆÇø
-	GameCard *equipCards;                //×°±¸Çø
-	RoleCard *role;                      //½ÇÉ«ÅÆ
-	vector<GameCard*> judgeCards;        //ÅĞ¶¨Çø
-	PowerCard *power;                    //ÌåÁ¦ÅÆ
+	vector<GameCard*> handCards;         //æ‰‹ç‰ŒåŒº
+	GameCard *equipCards;                //è£…å¤‡åŒº
+	RoleCard *role;                      //è§’è‰²ç‰Œ
+	vector<GameCard*> judgeCards;        //åˆ¤å®šåŒº
+	PowerCard *power;                    //ä½“åŠ›ç‰Œ
 };
 
 typedef shared_ptr<Player> sptr_Player;
