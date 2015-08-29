@@ -9,7 +9,7 @@ int main()
 		s.run();
 	}
 
-	catch (String &e)
+	catch (std::string &e)
 	{
 		cout << e << endl;
 	}
