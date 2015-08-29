@@ -8,8 +8,8 @@ class RoleCard :public ObjectCard
 {
 public:
 private:
-	string party; //æ‰€å±åŠ¿åŠ›
-	string power; //é»˜è®¤ç”Ÿå‘½ç‚¹æ•°
+	string party; //ËùÊôÊÆÁ¦
+	string power; //Ä¬ÈÏÉúÃüµãÊı
 
 };
 

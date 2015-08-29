@@ -1,5 +1,5 @@
 //=================================
-//å¡ç‰ŒåŸºç±»
+//¿¨ÅÆ»ùÀà
 //=================================
 
 #ifndef _OBJECT_CARD_HPP_
@@ -11,12 +11,12 @@ class ObjectCard
 {
 public:
 	string GetName();
-	char Turnover();  //ç¿»è½¬ç‰Œé¢
+	char Turnover();  //·­×ªÅÆÃæ
 private:
 	string name;
-	char face; //ç‰Œé¢æœå‘Uï¼ˆupï¼‰Dï¼ˆdownï¼‰
-	string exPackage; //æ‰©å±•åŒ…
-	string tips;//å¡ç‰Œè¯´æ˜
+	char face; //ÅÆÃæ³¯ÏòU£¨up£©D£¨down£©
+	string exPackage; //À©Õ¹°ü
+	string tips;//¿¨ÅÆËµÃ÷
 };
 
 string ObjectCard::GetName()

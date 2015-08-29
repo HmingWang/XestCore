@@ -6,9 +6,9 @@
 class GameCard :public ObjectCard
 {
 private:
-	char rank;//ç‚¹æ•°AKQJ2-10
-	char suit;//èŠ±è‰²:é»‘çº¢æ¢…æ–¹Spade Heart Club Diamond
-	char type;//ç±»å‹ï¼šé”¦å›Šã€æ­¦å™¨ã€è£…å¤‡ã€æˆ˜é©¬ã€å®ç‰©
+	char rank;//µãÊıAKQJ2-10
+	char suit;//»¨É«:ºÚºìÃ··½Spade Heart Club Diamond
+	char type;//ÀàĞÍ£º½õÄÒ¡¢ÎäÆ÷¡¢×°±¸¡¢Õ½Âí¡¢±¦Îï
 public:
 	char GetRank();
 	char GetSuit();

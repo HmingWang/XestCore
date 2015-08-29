@@ -53,7 +53,7 @@ public:
 			}
 		}
 
-		if (end != this->end())   this->erase(end, this->end());        //先删除结尾
+		if (end != this->end())   this->erase(end, this->end());        //鍏堝垹闄ょ粨瀹?
 		if (start != this->begin()) this->erase(this->begin(), start);
 		return *this;
 	}
