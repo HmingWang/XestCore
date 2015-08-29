@@ -3,8 +3,17 @@
 int main()
 {
 	Server s;
-	s.start();
-	s.run();
+	try
+	{
+		s.start();
+		s.run();
+	}
+
+	catch (String &e)
+	{
+		cout << e << endl;
+	}
+
 
 	system("pause");
 	return 0;
