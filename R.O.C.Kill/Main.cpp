@@ -1,10 +1,10 @@
-#include "Server.hpp"
+ï»¿#include "Server.hpp"
 
 int main()
 {
 
 
-	cout << "ÏµÍ³»·¾³£º" << endl;
+	cout << "ç³»ç»ŸçŽ¯å¢ƒï¼š" << endl;
 #ifdef __GNUC__
 	cout << "__GNUC__" << endl;
 #endif
@@ -17,9 +17,7 @@ int main()
 #ifdef WIN32
 	cout << "WIN32" << endl;
 #endif
-#ifdef linux 
-	cout << "linux " << endl;
-#endif
+
 
 
 
@@ -28,7 +26,9 @@ int main()
 	s.run();
 
 
-
+#ifdef WIN32
 	system("pause");
+#endif
+
 	return 0;
 }
