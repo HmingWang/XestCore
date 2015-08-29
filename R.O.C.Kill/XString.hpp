@@ -7,6 +7,8 @@
 #include <cstdint>
 #include <limits>
 
+#define XSTRING
+
 class XString :public std::string
 {
 public:

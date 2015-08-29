@@ -1,4 +1,4 @@
-//====================================================
+ï»¿//====================================================
 //Standard Xest Application Framework Extensions
 //
 //Copyright Xest Studio.
@@ -21,8 +21,11 @@
 #include<boost/bind.hpp>
 #include "XString.hpp"
 
+#ifdef XSTRING
 #define String XString
-//#define String std::string 
+#else
+#define String std::string 
+#endif
 
 using std::cout;
 using std::cin;
@@ -38,8 +41,8 @@ using std::make_shared;
 using std::exception;
 using boost::asio::ip::tcp;
 
-//ºê¶¨Òå
-//²Ù×÷ÃüÁî
+//å®å®šä¹‰
+//æ“ä½œå‘½ä»¤
 #define CMD_ECHO        100
 #define CMD_KEEPALIVE   101 
 #define CMD_LOGIN       102
@@ -48,16 +51,16 @@ using boost::asio::ip::tcp;
 #define CMD_CRTPLAYER   105
 #define CMD_CRTDESKTOP  106
 #define CMD_REFRESH     107
-//ÍÆËÍ
+//æ¨é€
 #define PUSH_PLAYER     201
 
-//×Ö·û´®³£Á¿
+//å­—ç¬¦ä¸²å¸¸é‡
 const string cstr_login = string(
 	"\n====================================================\n") +
-	"===        ÌìÏÂ·çÔÆ³öÎÒ±²£¬ Ò»Èë½­ºşËêÔÂ´ß£»     ===\n" +
-	"===        »ÊÍ¼°ÔÒµÌ¸Ğ¦¼ä£¬ ²»Ê¤ÈËÉúÒ»³¡×í¡£     ===\n" +
-	"===        Ìá½£¿çÆï»Ó¹íÓê£¬ °×¹ÇÈçÉ½Äñ¾ª·É£»     ===\n" +
-	"===        ³¾ÊÂÈç³±ÈËÈçË®£¬ Ö»Ì¾½­ºş¼¸ÈË»Ø¡£     ===\n" +
+	"===        å¤©ä¸‹é£äº‘å‡ºæˆ‘è¾ˆï¼Œ ä¸€å…¥æ±Ÿæ¹–å²æœˆå‚¬ï¼›     ===\n" +
+	"===        çš‡å›¾éœ¸ä¸šè°ˆç¬‘é—´ï¼Œ ä¸èƒœäººç”Ÿä¸€åœºé†‰ã€‚     ===\n" +
+	"===        æå‰‘è·¨éª‘æŒ¥é¬¼é›¨ï¼Œ ç™½éª¨å¦‚å±±é¸ŸæƒŠé£ï¼›     ===\n" +
+	"===        å°˜äº‹å¦‚æ½®äººå¦‚æ°´ï¼Œ åªå¹æ±Ÿæ¹–å‡ äººå›ã€‚     ===\n" +
 	"====================================================\n";
 
 #endif //_STDXAFX_H_
