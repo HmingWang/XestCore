@@ -1,4 +1,4 @@
-#include"Desktop.h"
+﻿#include"Desktop.h"
 #include "Player.h"
 
 void Desktop::join(int id ,sptr_Player p)
@@ -12,27 +12,27 @@ void Desktop::leave(int id){
 	playerMap.erase(id);
 	std::cout << "[DESK][当前人数]:" << playerMap.size() << std::endl;
 }
-void Desktop::deliver(string msg,int id){
+void Desktop::deliver(int id,string msg){
 	if (id == 0) {
 		for (auto p : playerMap) {
-			if(p.second->getSession()->isConnected())
+			if(p.second->getSession()!=nullptr&& p.second->getSession()->isConnected())
 				p.second->getSession()->do_write(msg);
 		}
 	}
 	else {
-		if (playerMap[id]->getSession()->isConnected())
+		if (playerMap[id]->getSession() != nullptr&&playerMap[id]->getSession()->isConnected())
 			playerMap[id]->getSession()->do_write(msg);
 	}
 }
 
 void Desktop::refrash()
 {
-	string cmd = String().FromInt(PUSH_PLAYER) + ":";
+	string cmd = String::FromInt(PUSH_PLAYER) + ":";
 	for (auto m : playerMap)
 	{
 		cmd += m.second->getName() + "," + m.second->getSex() + ";";
 	}
-	deliver(cmd);
+	deliver(0,cmd);
 }
 
 sptr_Player Desktop::getPlayerById(int id){

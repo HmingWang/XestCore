@@ -11,12 +11,6 @@ int main()
 #ifdef _MSC_VER
 	cout << "_MSC_VER" << endl;
 #endif
-#ifdef _WIN32
-	cout << "_WIN32" << endl;
-#endif
-#ifdef WIN32
-	cout << "WIN32" << endl;
-#endif
 
 	Server s;
 	s.start();

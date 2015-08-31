@@ -22,12 +22,13 @@ public:
 
 	bool emplace(int id, sptr_Socket psocket)
 	{
-		cout << "[SMGR]创建会话[ID:" << id << "]" << endl;
+		cout << "[SMGR]增加会话[ID:" << id << "]当前会话数["<< m_SessionsMap.size()+1<<"]" << endl;
 		return m_SessionsMap.emplace(id,std::make_shared<Session>(id,psocket)).second;
+
 	}
 	void erase(int id) 
 	{
-		cout << "[SMGR]删除会话[ID:" << id << "]" << endl;
+		cout << "[SMGR]移除会话[ID:" << id << "]当前会话数[" << m_SessionsMap.size()-1 << "]" << endl;
 		m_SessionsMap.erase(id);
 	}
 

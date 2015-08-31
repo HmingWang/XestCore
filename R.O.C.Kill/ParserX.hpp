@@ -36,11 +36,12 @@ public:
 			break;
 		case CMD_CHAT:
 			//聊天
-			spDesktop->deliver(argVec.back());
+			spDesktop->deliver(0,argVec.back());
 			break;
 		case CMD_CRTPLAYER:
 			argVec = argVec.back().Split(";");
-			spPlayer = make_shared<Player>(cmd.GetSessionID(), argVec.front(),argVec.back().compare("True")==0);
+			
+			spPlayer = make_shared<Player>(cmd.GetSessionID(), argVec.front(),argVec.back().ConvertTo<int>()==1);
 			spDesktop->join(cmd.GetSessionID(),spPlayer);
 			break;
 		case CMD_CRTDESKTOP:

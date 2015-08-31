@@ -77,12 +77,28 @@ public:
 		return std::move(strVec);
 	}
 
-	XString FromInt(int i) {
+	static XString FromInt(int i) {
 		std::stringstream ss;
 		ss << i;
 		return ss.str();
 	}
 
+	template<typename Type>
+	static XString ConvertFrom(Type type) 
+	{
+		std::stringstream ss;
+		ss << type;
+		return ss.str();
+	}
+	template<typename Type>
+	Type ConvertTo() 
+	{
+		std::stringstream ss;
+		Type type;
+		ss << *this;
+		ss >> type;
+		return std::move(type);
+	}
 
 private:
 	const int TrimHead = 0;

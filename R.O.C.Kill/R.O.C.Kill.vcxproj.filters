@@ -15,18 +15,18 @@
     <Filter Include="源文件\skill">
       <UniqueIdentifier>{d44ace3c-782e-4085-bec8-af566e1aac34}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\control">
-      <UniqueIdentifier>{a72726c6-3251-4f84-b8dd-29b472fd9a33}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\Cards">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="源文件\Communication">
-      <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="脚本">
       <UniqueIdentifier>{23cd633f-7204-48e6-8c41-1eccd96276bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Server">
+      <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Control">
+      <UniqueIdentifier>{a72726c6-3251-4f84-b8dd-29b472fd9a33}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,13 +34,13 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Desktop.cpp">
-      <Filter>源文件\control</Filter>
+      <Filter>源文件\Control</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>源文件\control</Filter>
+      <Filter>源文件\Control</Filter>
     </ClCompile>
     <ClCompile Include="Session.cpp">
-      <Filter>源文件\Communication</Filter>
+      <Filter>源文件\Server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,25 +63,22 @@
       <Filter>源文件\Cards</Filter>
     </ClInclude>
     <ClInclude Include="MsgQueue.hpp">
-      <Filter>源文件\control</Filter>
+      <Filter>源文件\Control</Filter>
     </ClInclude>
     <ClInclude Include="ParserX.hpp">
-      <Filter>源文件\control</Filter>
-    </ClInclude>
-    <ClInclude Include="XString.hpp">
-      <Filter>源文件\control</Filter>
+      <Filter>源文件\Control</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>源文件\control</Filter>
+      <Filter>源文件\Control</Filter>
     </ClInclude>
     <ClInclude Include="Desktop.h">
-      <Filter>源文件\control</Filter>
+      <Filter>源文件\Control</Filter>
     </ClInclude>
     <ClInclude Include="Server.hpp">
-      <Filter>源文件\Communication</Filter>
+      <Filter>源文件\Server</Filter>
     </ClInclude>
     <ClInclude Include="Session.h">
-      <Filter>源文件\Communication</Filter>
+      <Filter>源文件\Server</Filter>
     </ClInclude>
     <ClInclude Include="stdxafx.h">
       <Filter>源文件</Filter>
@@ -90,10 +87,13 @@
       <Filter>源文件\Util</Filter>
     </ClInclude>
     <ClInclude Include="Command.hpp">
-      <Filter>源文件\Communication</Filter>
+      <Filter>源文件\Server</Filter>
     </ClInclude>
     <ClInclude Include="SessionMgr.hpp">
-      <Filter>源文件\Communication</Filter>
+      <Filter>源文件\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="XString.hpp">
+      <Filter>源文件\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
