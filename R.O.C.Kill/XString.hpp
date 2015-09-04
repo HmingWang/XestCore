@@ -12,9 +12,15 @@
 class XString :public std::string
 {
 public:
-	XString():std::string(),Length(length()){}
-	XString(const char* str) :std::string(str), Length(length()){}
-	XString(std::string str) :std::string(str), Length(length()){}
+	XString() :std::string(), Length(length()) {}
+	XString(const char* str) :std::string(str), Length(length()) {}
+	XString(std::string str) :std::string(str), Length(length()) {}
+	XString(XString &str) :std::string(static_cast<std::string>(str)), Length(str.length()) {}
+	XString &XString::operator=(const XString &str)
+	{
+		*static_cast<std::string*>(this) = str;
+		return *static_cast<XString*>(this);
+	}
 
 	XString& Trim(std::string trimChars = " "){
 		if (trimChars.empty()) trimChars=" ";
@@ -78,9 +84,7 @@ public:
 	}
 
 	static XString FromInt(int i) {
-		std::stringstream ss;
-		ss << i;
-		return ss.str();
+		return std::to_string(i);
 	}
 
 	template<typename Type>
@@ -88,7 +92,7 @@ public:
 	{
 		std::stringstream ss;
 		ss << type;
-		return ss.str();
+		return std::move(ss.str());
 	}
 	template<typename Type>
 	Type ConvertTo() 

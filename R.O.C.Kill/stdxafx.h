@@ -53,6 +53,7 @@ using boost::asio::ip::tcp;
 #define CMD_REFRESH     107
 //推送
 #define PUSH_PLAYER     201
+#define PUSH_CHAT       202
 
 //字符串常量
 const string cstr_login = string(

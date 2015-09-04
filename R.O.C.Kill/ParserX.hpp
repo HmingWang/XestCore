@@ -36,7 +36,8 @@ public:
 			break;
 		case CMD_CHAT:
 			//聊天
-			spDesktop->deliver(0,argVec.back());
+			msgBack = String::FromInt(PUSH_CHAT) + ":" + spDesktop->getPlayerById(cmd.GetSessionID())->getName() + " 说：" + argVec.back();
+			spDesktop->deliver(0, msgBack);
 			break;
 		case CMD_CRTPLAYER:
 			argVec = argVec.back().Split(";");

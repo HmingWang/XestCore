@@ -95,6 +95,12 @@
     <ClInclude Include="XString.hpp">
       <Filter>源文件\Util</Filter>
     </ClInclude>
+    <ClInclude Include="XString.h">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="XException.h">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.sh">
