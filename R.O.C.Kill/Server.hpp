@@ -39,6 +39,7 @@ Server::Server() :
 	acceptor(io_service, endpoint)
 {
 	std::cout << "[SERV]服务器初始化完成..." << std::endl;
+	std::cout << cstr_login << std::endl;
 }
 void Server::start()
 {

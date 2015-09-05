@@ -11,7 +11,8 @@ int main()
 #ifdef _MSC_VER
 	cout << "_MSC_VER" << endl;
 #endif
-
+	system("color 0A");//黑绿
+	system("color 1E");//蓝黄
 	Server s;
 	s.start();
 	s.run();
