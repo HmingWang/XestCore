@@ -34,7 +34,7 @@ private:
 Server::Server() :
 	io_service(),
 	idseq(1000),
-	endpoint(tcp::v4(), 1986),
+	endpoint(tcp::v4(), 1118),
 	socket(io_service),
 	acceptor(io_service, endpoint)
 {

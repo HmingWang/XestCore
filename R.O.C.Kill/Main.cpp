@@ -22,8 +22,8 @@ int main()
 	//6 = 黄色       E = 淡黄色
 	//7 = 白色       F = 亮白色
 
-	system("color 0A");//黑绿
-	system("color 1E");//蓝黄
+	//system("color 0A");//黑绿
+	//system("color 1E");//蓝黄
 	system("color 1F");//蓝白
 #endif
 	Server s;

@@ -95,10 +95,16 @@
     <ClInclude Include="XString.hpp">
       <Filter>源文件\Util</Filter>
     </ClInclude>
-    <ClInclude Include="XString.h">
+    <ClInclude Include="XException.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
-    <ClInclude Include="XException.h">
+    <ClInclude Include="MessageBuffer.h">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="CompilerDefs.h">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
   </ItemGroup>
