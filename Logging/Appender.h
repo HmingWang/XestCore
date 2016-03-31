@@ -5,6 +5,10 @@
 #ifndef XESTCORE_APPENDER_H
 #define XESTCORE_APPENDER_H
 
+#include <string>
+#include <time.h>
+#include <unordered_map>
+#include <vector>
 #include "../Define.h"
 
 enum LogLevel
@@ -62,8 +66,48 @@ struct TC_COMMON_API LogMessage
         }
         };
 
-class Appender {
+class TC_COMMON_API Appender
+{
+public:
+    Appender(uint8 _id, std::string const& name, LogLevel level = LOG_LEVEL_DISABLED, AppenderFlags flags = APPENDER_FLAGS_NONE);
+    virtual ~Appender();
 
+    uint8 getId() const;
+    std::string const& getName() const;
+    virtual AppenderType getType() const = 0;
+    LogLevel getLogLevel() const;
+    AppenderFlags getFlags() const;
+
+    void setLogLevel(LogLevel);
+    void write(LogMessage* message);
+    static const char* getLogLevelString(LogLevel level);
+    virtual void setRealmId(uint32 /*realmId*/) { }
+
+private:
+    virtual void _write(LogMessage const* /*message*/) = 0;
+
+    uint8 id;
+    std::string name;
+    LogLevel level;
+    AppenderFlags flags;
+};
+
+typedef std::unordered_map<uint8, Appender*> AppenderMap;
+
+typedef std::vector<char const*> ExtraAppenderArgs;
+typedef Appender*(*AppenderCreatorFn)(uint8 id, std::string const& name, LogLevel level, AppenderFlags flags, ExtraAppenderArgs extraArgs);
+typedef std::unordered_map<uint8, AppenderCreatorFn> AppenderCreatorMap;
+
+template<class AppenderImpl>
+Appender* CreateAppender(uint8 id, std::string const& name, LogLevel level, AppenderFlags flags, ExtraAppenderArgs extraArgs)
+{
+        return new AppenderImpl(id, name, level, flags, std::forward<ExtraAppenderArgs>(extraArgs));
+}
+
+class TC_COMMON_API InvalidAppenderArgsException : public std::length_error
+{
+public:
+    explicit InvalidAppenderArgsException(std::string const& message) : std::length_error(message) { }
 };
 
 
