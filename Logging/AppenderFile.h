@@ -1,5 +1,5 @@
 //
-// Created by whaim on 16-3-30.
+// Created by whaim on 2016/3/31.
 //
 
 #ifndef XESTCORE_APPENDERFILE_H
@@ -8,10 +8,11 @@
 #include <atomic>
 #include "Appender.h"
 
-class TC_COMMON_API AppenderFile :public Appender
+class TC_COMMON_API AppenderFile : public Appender
 {
 public:
-    typedef std::integral_constant<AppenderType, APPENDER_FILE>::type TypeIndex;//编译时int常量
+    typedef std::integral_constant<AppenderType, APPENDER_FILE>::type TypeIndex;
+
     AppenderFile(uint8 id, std::string const& name, LogLevel level, AppenderFlags flags, ExtraAppenderArgs extraArgs);
     ~AppenderFile();
     FILE* OpenFile(std::string const& name, std::string const& mode, bool backup);
