@@ -1,6 +1,9 @@
-project(Logging)
 
-include_directories(XESTCORE_SOURCE_DIR)
+
+include_directories(
+        ${XESTCORE_SOURCE_DIR}/dep
+        ${XESTCORE_SOURCE_DIR}/Common
+)
 
 set(LIB_LOG_SOURCE
         Appender.cpp
@@ -8,6 +11,6 @@ set(LIB_LOG_SOURCE
         AppenderFile.cpp
         AppenderFile.h
         Log.cpp
-        Log.h)
+        Log.h Logger.cpp Logger.h)
 
 add_library(Logging SHARED ${LIB_LOG_SOURCE})

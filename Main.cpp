@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    cout<<"³ÌÐòÆô¶¯"<<endl;
+    cout<<"server starting"<<endl;
     return 0;
 }
 

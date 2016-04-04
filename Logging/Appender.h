@@ -9,7 +9,7 @@
 #include <time.h>
 #include <unordered_map>
 #include <vector>
-#include "../Define.h"
+#include "../Common/Define.h"
 
 enum LogLevel
 {
@@ -36,14 +36,14 @@ enum AppenderFlags
     APPENDER_FLAGS_PREFIX_TIMESTAMP              = 0x01,
     APPENDER_FLAGS_PREFIX_LOGLEVEL               = 0x02,
     APPENDER_FLAGS_PREFIX_LOGFILTERTYPE          = 0x04,
-    APPENDER_FLAGS_USE_TIMESTAMP                 = 0x08, // only used by FileAppender
+    APPENDER_FLAGS_USE_TIMESTAMP                 = 0x08, // only used by FileAppender  使用时间戳
     APPENDER_FLAGS_MAKE_FILE_BACKUP              = 0x10  // only used by FileAppender
 };
 
 struct TC_COMMON_API LogMessage
-        {
-                LogMessage(LogLevel _level, std::string const& _type, std::string&& _text)
-        : level(_level), type(_type), text(std::forward<std::string>(_text)), mtime(time(NULL))
+{
+        LogMessage(LogLevel _level, std::string const& _type, std::string&& _text)
+                : level(_level), type(_type), text(std::forward<std::string>(_text)), mtime(time(NULL))
         { }
 
         LogMessage(LogMessage const& /*other*/) = delete;
@@ -55,8 +55,8 @@ struct TC_COMMON_API LogMessage
         LogLevel const level;
         std::string const type;
         std::string const text;
-        std::string prefix;
-        std::string param1;
+        std::string prefix; //日志前缀
+        std::string param1; //参数1
         time_t mtime;
 
         ///@ Returns size of the log message content in bytes
@@ -64,7 +64,7 @@ struct TC_COMMON_API LogMessage
         {
             return static_cast<uint32>(prefix.size() + text.size());
         }
-        };
+};
 
 class TC_COMMON_API Appender
 {
@@ -94,9 +94,9 @@ private:
 
 typedef std::unordered_map<uint8, Appender*> AppenderMap;
 
-typedef std::vector<char const*> ExtraAppenderArgs;
+typedef std::vector<char const*> ExtraAppenderArgs;//扩展参数
 typedef Appender*(*AppenderCreatorFn)(uint8 id, std::string const& name, LogLevel level, AppenderFlags flags, ExtraAppenderArgs extraArgs);
-typedef std::unordered_map<uint8, AppenderCreatorFn> AppenderCreatorMap;
+typedef std::unordered_map<uint8, AppenderCreatorFn> AppenderCreatorMap; //构造函数指针MAP
 
 template<class AppenderImpl>
 Appender* CreateAppender(uint8 id, std::string const& name, LogLevel level, AppenderFlags flags, ExtraAppenderArgs extraArgs)
