@@ -46,8 +46,8 @@ public:
             return;
 
         std::unique_ptr<LogMessage> msg =
-                std::make_unique<LogMessage>(LOG_LEVEL_INFO, "commands.gm",
-                                                 fmt::sprintf(std::forward<Format>(fmt), std::forward<Args>(args)...));
+                std::unique_ptr<LogMessage>(new LogMessage(LOG_LEVEL_INFO, "commands.gm",
+                                                 fmt::sprintf(std::forward<Format>(fmt), std::forward<Args>(args)...)));
 
         msg->param1 = std::to_string(account);
 
