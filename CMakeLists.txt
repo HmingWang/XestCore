@@ -6,13 +6,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/dep
         ${CMAKE_CURRENT_SOURCE_DIR}/Common
-        ${CMAKE_CURRENT_SOURCE_DIR}/Configuration
+        ${CMAKE_CURRENT_SOURCE_DIR}/Common/Utilities
+        ${CMAKE_CURRENT_SOURCE_DIR}/Common/Logging
+        ${CMAKE_CURRENT_SOURCE_DIR}/Common/Configuration
 )
 
-add_subdirectory(Logging)
+
 add_subdirectory(Common)
 add_subdirectory(dep)
-add_subdirectory(Configuration)
 
 
 set(SOURCE_FILES Main.cpp)

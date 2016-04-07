@@ -9,7 +9,7 @@
 #include <time.h>
 #include <unordered_map>
 #include <vector>
-#include "../Common/Define.h"
+#include "Define.h"
 
 enum LogLevel
 {
@@ -21,6 +21,8 @@ enum LogLevel
     LOG_LEVEL_ERROR                              = 5,
     LOG_LEVEL_FATAL                              = 6
 };
+
+const uint8 MaxLogLevels = 6;
 
 enum AppenderType
 {

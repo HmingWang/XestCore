@@ -63,7 +63,7 @@ public:
     {
         using Index = typename AppenderImpl::TypeIndex;
         auto itr = appenderFactory.find(Index::value);
-        ASSERT(itr == appenderFactory.end());
+        //ASSERT(itr == appenderFactory.end());
         appenderFactory[Index::value] = &CreateAppender<AppenderImpl>;
     }
 

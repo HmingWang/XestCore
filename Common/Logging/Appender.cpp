@@ -4,7 +4,6 @@
 
 
 #include <sstream>
-#include <stdio.h>
 #include "Appender.h"
 
 std::string LogMessage::getTimeStr(time_t time)
