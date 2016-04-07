@@ -14,6 +14,7 @@ include_directories(
 
 add_subdirectory(Common)
 add_subdirectory(dep)
+add_subdirectory(Shared)
 
 
 set(SOURCE_FILES Main.cpp)
