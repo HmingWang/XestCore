@@ -22,6 +22,6 @@ set(LIB_COMMON_SOURCE
         ${CMAKE_CURRENT_SOURCE_DIR}/Logging/LogOperation.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/Configuration/Config.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Configuration/Config.h)
+        ${CMAKE_CURRENT_SOURCE_DIR}/Configuration/Config.h Utilities/ByteConvert.h)
 
 add_library(Common ${LIB_COMMON_SOURCE})

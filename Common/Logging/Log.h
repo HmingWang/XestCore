@@ -54,9 +54,6 @@ public:
         write(std::move(msg));
     }
 
-    void outCharDump(char const* str, uint32 account_id, uint64 guid, char const* name);
-
-    void SetRealmId(uint32 id);
 
     template<class AppenderImpl>
     void RegisterAppender()

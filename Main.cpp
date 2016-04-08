@@ -1,8 +1,13 @@
 #include <iostream>
+#include "Log.h"
+
 using namespace std;
+
 int main()
 {
-    cout<<"server starting"<<endl;
+    sLog->Initialize(nullptr);
+    TC_LOG_INFO("server","Server is Starting...");
+
     return 0;
 }
 

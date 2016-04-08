@@ -10,7 +10,7 @@
 #include "LogOperation.h"
 
 
-Log::Log() : AppenderId(0), lowestLogLevel(LOG_LEVEL_FATAL), _ioService(nullptr), _strand(nullptr)
+Log::Log() : AppenderId(0), lowestLogLevel(LOG_LEVEL_TRACE), _ioService(nullptr), _strand(nullptr)
 {
     m_logsTimestamp = "_" + GetTimestampStr();
     RegisterAppender<AppenderConsole>();
@@ -189,8 +189,8 @@ void Log::ReadLoggersFromConfig()
     // Bad config configuration, creating default config
     if (loggers.find(LOGGER_ROOT) == loggers.end())
     {
-        fprintf(stderr, "Wrong Loggers configuration. Review your Logger config section.\n"
-                "Creating default loggers [root (Error), server (Info)] to console\n");
+        /*fprintf(stderr, "Wrong Loggers configuration. Review your Logger config section.\n"
+                "Creating default loggers [root (Error), server (Info)] to console\n");*/
 
         Close(); // Clean any Logger or Appender created
 
@@ -235,4 +235,85 @@ std::string Log::GetTimestampStr()
     //       MM     minutes (2 digits 00-59)
     //       SS     seconds (2 digits 00-59)
     return fmt::sprintf("%04d-%02d-%02d_%02d-%02d-%02d", aTm.tm_year + 1900, aTm.tm_mon + 1, aTm.tm_mday, aTm.tm_hour, aTm.tm_min, aTm.tm_sec);
+}
+
+bool Log::SetLogLevel(std::string const& name, const char* newLevelc, bool isLogger /* = true */)
+{
+    LogLevel newLevel = LogLevel(atoi(newLevelc));
+    if (newLevel < 0)
+        return false;
+
+    if (isLogger)
+    {
+        LoggerMap::iterator it = loggers.begin();
+        while (it != loggers.end() && it->second.getName() != name)
+            ++it;
+
+        if (it == loggers.end())
+            return false;
+
+        it->second.setLogLevel(newLevel);
+
+        if (newLevel != LOG_LEVEL_DISABLED && newLevel < lowestLogLevel)
+            lowestLogLevel = newLevel;
+    }
+    else
+    {
+        Appender* appender = GetAppenderByName(name);
+        if (!appender)
+            return false;
+
+        appender->setLogLevel(newLevel);
+    }
+
+    return true;
+}
+
+void Log::Close()
+{
+    loggers.clear();
+    for (AppenderMap::iterator it = appenders.begin(); it != appenders.end(); ++it)
+        delete it->second;
+
+    appenders.clear();
+}
+
+Log* Log::instance()
+{
+    static Log instance;
+    return &instance;
+}
+
+void Log::Initialize(boost::asio::io_service* ioService)
+{
+    if (ioService)
+    {
+        _ioService = ioService;
+        _strand = new boost::asio::strand(*ioService);
+    }
+
+    LoadFromConfig();
+}
+
+void Log::SetSynchronous()
+{
+    delete _strand;
+    _strand = nullptr;
+    _ioService = nullptr;
+}
+
+
+void Log::LoadFromConfig()
+{
+    Close();
+
+    lowestLogLevel = LOG_LEVEL_TRACE;
+    AppenderId = 0;
+    m_logsDir = sConfigMgr->GetStringDefault("LogsDir", "");
+    if (!m_logsDir.empty())
+    if ((m_logsDir.at(m_logsDir.length() - 1) != '/') && (m_logsDir.at(m_logsDir.length() - 1) != '\\'))
+        m_logsDir.push_back('/');
+
+    ReadAppendersFromConfig();
+    ReadLoggersFromConfig();
 }
