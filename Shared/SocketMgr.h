@@ -6,7 +6,7 @@
 #define XESTCORE_SOCKETMGR_H
 
 #include "AsyncAcceptor.h"
-#include "Errors.h"
+//#include "Errors.h"
 #include "NetworkThread.h"
 #include <boost/asio/ip/tcp.hpp>
 #include <memory>
@@ -102,6 +102,7 @@ public:
     std::pair<tcp::socket*, uint32> GetSocketForAccept()
     {
         uint32 threadIndex = SelectThreadWithMinConnections();
+
         return std::make_pair(_threads[threadIndex].GetSocketForAccept(), threadIndex);
     }
 

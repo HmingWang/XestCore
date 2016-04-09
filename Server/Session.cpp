@@ -3,8 +3,9 @@
 //
 
 #include "Session.h"
-#include "Log.h"
 #include "ByteConvert.h"
+#include "proto/Client/rpc_types.pb.h"
+#include "ServiceDispatcher.h"
 
 Session::Session(tcp::socket&& socket) : SessionSocket(std::move(socket))
 {
@@ -18,7 +19,7 @@ Session::~Session()
 void Session::Start()
 {
     std::string ip_address = GetRemoteIpAddress().to_string();
-    TC_LOG_TRACE("session", "%s Accepted connection", GetClientInfo().c_str());
+    TRACE("%s Accepted connection", GetClientInfo().c_str());
 
     // Verify that this IP is not in the ip_banned table
     //LoginDatabase.Execute(LoginDatabase.GetPreparedStatement(LOGIN_DEL_EXPIRED_IP_BANS));
@@ -111,22 +112,23 @@ bool Session::ReadHeaderLengthHandler()
     uint16 len = *reinterpret_cast<uint16*>(_headerLengthBuffer.GetReadPointer());
     EndianConvertReverse(len);
     _headerBuffer.Resize(len);
+    TRACE("报文头部长度[%d]",len);
     return true;
 }
 
 bool Session::ReadHeaderHandler()
 {
-/*    Header header;
+    Header header;
     if (!header.ParseFromArray(_headerBuffer.GetReadPointer(), _headerBuffer.GetActiveSize()))
         return true;
 
-    _packetBuffer.Resize(header.size());*/
+    _packetBuffer.Resize(header.size());
     return true;
 }
 
 bool Session::ReadDataHandler()
 {
-/*    Header header;
+    Header header;
     header.ParseFromArray(_headerBuffer.GetReadPointer(), _headerBuffer.GetActiveSize());
 
     if (header.service_id() != 0xFE)
@@ -135,15 +137,15 @@ bool Session::ReadDataHandler()
     }
     else
     {
-        auto itr = _responseCallbacks.find(header.token());
+        /*auto itr = _responseCallbacks.find(header.token());
         if (itr != _responseCallbacks.end())
         {
             itr->second(std::move(_packetBuffer));
             _responseCallbacks.erase(header.token());
         }
         else
-            _packetBuffer.Reset();
-    }*/
+            _packetBuffer.Reset();*/
+    }
 
     return true;
 }

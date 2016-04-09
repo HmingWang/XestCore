@@ -204,6 +204,10 @@ void Log::ReadLoggersFromConfig()
         Logger& serverLogger = loggers["server"];
         serverLogger.Create("server", LOG_LEVEL_INFO);
         serverLogger.addAppender(appender->getId(), appender);
+
+        Logger& traceLogger = loggers["trace"];
+        traceLogger.Create("trace", LOG_LEVEL_TRACE);
+        traceLogger.addAppender(appender->getId(), appender);
     }
 }
 

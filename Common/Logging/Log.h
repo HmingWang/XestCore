@@ -185,4 +185,6 @@ void check_args(std::string const&, ...);
 
 #define TC_LOG_FATAL(filterType__, ...) \
     TC_LOG_MESSAGE_BODY(filterType__, LOG_LEVEL_FATAL, __VA_ARGS__)
+
+#define TRACE(...) TC_LOG_INFO("trace",__VA_ARGS__)
 #endif //XESTCORE_LOG_H
