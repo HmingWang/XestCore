@@ -111,7 +111,7 @@ bool Session::ReadHeaderLengthHandler()
 {
     uint16 len = *reinterpret_cast<uint16*>(_headerLengthBuffer.GetReadPointer());
     EndianConvertReverse(len);
-    _headerBuffer.Resize(len);
+    _headerBuffer.Resize(len); //根据头部长度设置头部Buffer大小
     TRACE("报文头部长度[%d]",len);
     return true;
 }
@@ -121,7 +121,7 @@ bool Session::ReadHeaderHandler()
     Header header;
     if (!header.ParseFromArray(_headerBuffer.GetReadPointer(), _headerBuffer.GetActiveSize()))
         return true;
-
+    //如果头部读取失败， 说明头部未读完。
     _packetBuffer.Resize(header.size());
     return true;
 }
@@ -137,14 +137,14 @@ bool Session::ReadDataHandler()
     }
     else
     {
-        /*auto itr = _responseCallbacks.find(header.token());
+        auto itr = _responseCallbacks.find(header.token());
         if (itr != _responseCallbacks.end())
         {
             itr->second(std::move(_packetBuffer));
             _responseCallbacks.erase(header.token());
         }
         else
-            _packetBuffer.Reset();*/
+            _packetBuffer.Reset();
     }
 
     return true;

@@ -67,7 +67,7 @@ target_include_directories(protobuf
 
 target_link_libraries(protobuf
   PUBLIC
-    threads)
+    pthread)
 
 set_target_properties(protobuf
     PROPERTIES
