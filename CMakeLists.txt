@@ -25,4 +25,4 @@ add_subdirectory(Service)
 set(SOURCE_FILES Main.cpp)
 
 add_executable(XestCore ${SOURCE_FILES})
-target_link_libraries(XestCore Server Service Common cppformat boost_system pthread)
+target_link_libraries(XestCore Server Service Common cppformat boost_system protobuf pthread)

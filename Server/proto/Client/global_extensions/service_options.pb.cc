@@ -2,7 +2,7 @@
 // source: global_extensions/service_options.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "global_extensions/service_options.pb.h"
+#include "service_options.pb.h"
 
 #include <algorithm>
 #include <utility>

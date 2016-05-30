@@ -2,7 +2,7 @@
 // source: global_extensions/method_options.proto
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
-#include "global_extensions/method_options.pb.h"
+#include "method_options.pb.h"
 
 #include <algorithm>
 #include <utility>
