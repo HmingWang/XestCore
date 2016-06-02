@@ -3,13 +3,13 @@
 //
 
 #include "Session.h"
-#include "ByteConvert.h"
-#include "proto/Client/rpc_types.pb.h"
 #include "ServiceDispatcher.h"
+#include "Message.h"
 
 Session::Session(tcp::socket&& socket) : SessionSocket(std::move(socket))
 {
-    _headerLengthBuffer.Resize(2);
+    //_headerLengthBuffer.Resize(2);
+    _headerBuffer.Resize(sizeof(Header));
 }
 
 Session::~Session()
@@ -39,7 +39,7 @@ bool Session::Update()
     if (!SessionSocket::Update())
         return false;
 
-    //TODO: Do Update things...
+    // Do Update things...
 
     return true;
 }
@@ -91,8 +91,6 @@ void Session::ReadHandler()
     MessageBuffer& packet = GetReadBuffer();
     while (packet.GetActiveSize() > 0)
     {
-        if (!PartialProcessPacket<&Session::ReadHeaderLengthHandler, &Session::_headerLengthBuffer>(this, packet))
-            break;
 
         if (!PartialProcessPacket<&Session::ReadHeaderHandler, &Session::_headerBuffer>(this, packet))
             break;
@@ -100,29 +98,31 @@ void Session::ReadHandler()
         if (!PartialProcessPacket<&Session::ReadDataHandler, &Session::_packetBuffer>(this, packet))
             break;
 
-        _headerLengthBuffer.Reset();
+        //_headerLengthBuffer.Reset();
         _headerBuffer.Reset();
     }
 
     AsyncRead();
 }
 
-bool Session::ReadHeaderLengthHandler()
+/*bool Session::ReadHeaderLengthHandler()
 {
     uint16 len = *reinterpret_cast<uint16*>(_headerLengthBuffer.GetReadPointer());
     EndianConvertReverse(len);
     _headerBuffer.Resize(len); //根据头部长度设置头部Buffer大小
     TRACE("报文头部长度[%d]",len);
     return true;
-}
+}*/
 
 bool Session::ReadHeaderHandler()
 {
     Header header;
     if (!header.ParseFromArray(_headerBuffer.GetReadPointer(), _headerBuffer.GetActiveSize()))
         return true;
-    //如果头部读取失败， 说明头部未读完。
-    _packetBuffer.Resize(header.size());
+
+    header.Print();
+
+    _packetBuffer.Resize(header.Get_DataLenth());
     return true;
 }
 
@@ -131,7 +131,7 @@ bool Session::ReadDataHandler()
     Header header;
     header.ParseFromArray(_headerBuffer.GetReadPointer(), _headerBuffer.GetActiveSize());
 
-    if (header.service_id() != 0xFE)
+    /*if (header.service_id() != 0xFE)
     {
         sServiceDispatcher.Dispatch(this, header.service_hash(), header.token(), header.method_id(), std::move(_packetBuffer));
     }
@@ -145,7 +145,7 @@ bool Session::ReadDataHandler()
         }
         else
             _packetBuffer.Reset();
-    }
+    }*/
 
     return true;
 }
