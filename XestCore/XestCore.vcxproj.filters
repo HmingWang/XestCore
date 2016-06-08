@@ -22,19 +22,19 @@
     <Filter Include="脚本">
       <UniqueIdentifier>{23cd633f-7204-48e6-8c41-1eccd96276bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Server">
-      <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\Control">
       <UniqueIdentifier>{a72726c6-3251-4f84-b8dd-29b472fd9a33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Base">
+      <UniqueIdentifier>{9e0ce0eb-76bf-40e3-aba3-5efc6eeaec06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Server">
+      <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Desktop.cpp">
-      <Filter>源文件\Control</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>源文件\Control</Filter>
@@ -43,6 +43,9 @@
       <Filter>源文件\Server</Filter>
     </ClCompile>
     <ClCompile Include="format.cc">
+      <Filter>源文件\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Desktop.cpp">
       <Filter>源文件\Util</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,20 +98,20 @@
     <ClInclude Include="SessionMgr.hpp">
       <Filter>源文件\Server</Filter>
     </ClInclude>
-    <ClInclude Include="XException.h">
-      <Filter>源文件\Util</Filter>
-    </ClInclude>
     <ClInclude Include="MessageBuffer.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
     <ClInclude Include="CompilerDefs.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Socket.h">
-      <Filter>源文件\Util</Filter>
-    </ClInclude>
     <ClInclude Include="format.h">
       <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="XString.hpp">
+      <Filter>源文件\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>源文件\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

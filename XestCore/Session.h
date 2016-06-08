@@ -3,10 +3,10 @@
 
 #include"stdxafx.h"
 
-
+typedef std::shared_ptr<tcp::socket> sptr_Socket;
 
 class Session {
-	typedef std::shared_ptr<tcp::socket> sptr_Socket;
+	
 private:
 	sptr_Socket m_spSocket;                //Socket
 	int m_ID;
