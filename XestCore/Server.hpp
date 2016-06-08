@@ -65,9 +65,7 @@ void Server::acceptHandler(std::shared_ptr<tcp::socket>& pSocket, boost::system:
 }
 void Server::run()
 {
-
 	io_service.run();
-
 }
 
 #endif

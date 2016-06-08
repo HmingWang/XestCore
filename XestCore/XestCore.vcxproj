@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9C46B834-B6D6-48AC-B8CC-829D556F1A57}</ProjectGuid>
-    <RootNamespace>ROCKill</RootNamespace>
+    <RootNamespace>XestCore</RootNamespace>
     <ProjectName>XestCore</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Desktop.cpp" />
+    <ClCompile Include="format.cc" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Session.cpp" />
@@ -88,13 +89,13 @@
     <ClInclude Include="CompilerDefs.h" />
     <ClInclude Include="DBUtil.hpp" />
     <ClInclude Include="Desktop.h" />
+    <ClInclude Include="format.h" />
     <ClInclude Include="MessageBuffer.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="XException.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SessionMgr.hpp" />
-    <ClInclude Include="XString.hpp" />
     <ClInclude Include="GameCard.hpp" />
     <ClInclude Include="IdentityCard.hpp" />
     <ClInclude Include="MsgQueue.hpp" />
@@ -105,6 +106,7 @@
     <ClInclude Include="Server.hpp" />
     <ClInclude Include="stdxafx.h" />
     <ClInclude Include="Util.hpp" />
+    <ClInclude Include="XString.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build.sh" />

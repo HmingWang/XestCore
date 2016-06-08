@@ -42,6 +42,9 @@
     <ClCompile Include="Session.cpp">
       <Filter>源文件\Server</Filter>
     </ClCompile>
+    <ClCompile Include="format.cc">
+      <Filter>源文件\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Util.hpp">
@@ -92,9 +95,6 @@
     <ClInclude Include="SessionMgr.hpp">
       <Filter>源文件\Server</Filter>
     </ClInclude>
-    <ClInclude Include="XString.hpp">
-      <Filter>源文件\Util</Filter>
-    </ClInclude>
     <ClInclude Include="XException.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
@@ -105,6 +105,9 @@
       <Filter>源文件\Util</Filter>
     </ClInclude>
     <ClInclude Include="Socket.h">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="format.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
   </ItemGroup>
