@@ -118,5 +118,7 @@
     <None Include="build.sh">
       <Filter>脚本</Filter>
     </None>
+    <None Include="..\.gitattributes" />
+    <None Include="..\.gitignore" />
   </ItemGroup>
 </Project>
