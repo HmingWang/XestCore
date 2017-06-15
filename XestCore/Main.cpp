@@ -1,16 +1,13 @@
-﻿#include "Server.hpp"
+﻿#include <iostream>
+#include "Log.h"
+#include "Socket.h"
+#include "AsyncAcceptor.h"
+#include "Session.h"
+#include "SessionMgr.h"
+using namespace std;
 
 int main()
 {
-
-
-	cout << "系统环境：" << endl;
-#ifdef __GNUC__
-	cout << "__GNUC__" << endl;
-#endif
-#ifdef _MSC_VER
-	cout << "_MSC_VER" << endl;
-#endif
 
 #ifdef WIN32
 	//0 = 黑色       8 = 灰色
@@ -26,14 +23,16 @@ int main()
 	//system("color 1E");//蓝黄
 	system("color 1F");//蓝白
 #endif
-	Server s;
-	s.start();
-	s.run();
 
+	boost::asio::io_service ios;
+	string ipAddr = "0.0.0.0";
+	uint16 port = 1986;
+	Trace("[MAIN]服务器启动：[IP:%s][Port:%d]", ipAddr.c_str(), port);
 
-#ifdef WIN32
+	sSessionMgr.StartNetwork(ios, ipAddr, port, 1);
+
+	ios.run();
+
 	system("pause");
-#endif
-
 	return 0;
 }

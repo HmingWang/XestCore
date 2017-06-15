@@ -26,7 +26,7 @@ public:
 		switch (atoi(argVec.front().c_str()))
 		{
 		case CMD_ECHO:
-			sSessionMgr.SendTo(cmd.GetSessionID(), cmd.GetMessage());
+			//sSessionMgr.SendTo(cmd.GetSessionID(), cmd.GetMessage());
 			break;
 		case CMD_KEEPALIVE:
 			//通讯保持-业务确认
@@ -50,7 +50,7 @@ public:
 		case CMD_REFRESH:
 			spDesktop->refrash();
 		default:
-			sSessionMgr.SendTo(cmd.GetSessionID(), cmd.GetMessage());
+			//sSessionMgr.SendTo(cmd.GetSessionID(), cmd.GetMessage());
 			break;
 		}
 		//return std::move(msgBack);

@@ -1,29 +1,43 @@
 #ifndef _SESSION_H_
 #define _SESSION_H_
 
-#include"stdxafx.h"
+#include "Socket.h"
+#include "format.h"
 
-typedef std::shared_ptr<tcp::socket> sptr_Socket;
-
-class Session {
-	
-private:
-	sptr_Socket m_spSocket;                //Socket
-	int m_ID;
-	boost::asio::streambuf wsbuf;       //写入消息缓冲区//x
-	boost::asio::streambuf m_ReadBuffer;       //读取消息缓冲区
-	string m_WriteBuffer;                     //写入消息缓冲区
+class Session:public Socket<Session>
+{
 public:
-	~Session();
-	Session(int id,sptr_Socket ps);
-	bool isConnected();
-	void do_read();
-	void do_write(string);
-	string getAddress();
-	int getPort();
-	int GetID();
-	void start();                       //开始消息循环
-	void close();
-};
+	Session(tcp::socket&& socket) :Socket<Session>(std::move(socket)),_packet()
+	{
+		
+	}
+	void Start() 
+	{
+		Trace("[SESS]接收连接:[%s]", GetClientInfo().c_str());
+		AsyncRead();
+	}
+	void ReadHandler() override 
+	{
+		Trace("[SESS]>>(%d)%s",GetReadBuffer().GetActiveSize(), GetReadBuffer().GetReadPointer());
+		GetReadBuffer().ReadCompleted(GetReadBuffer().GetActiveSize());
+	}
 
-#endif // !_SESSION_HPP_
+	void Session::AsyncWrite(MessageBuffer&& packet)
+	{
+		if (!IsOpen())
+			return;
+
+		QueuePacket(std::move(packet));
+	}
+
+	void OnClose() override 
+	{
+	}
+	std::string GetClientInfo() 
+	{
+		return fmt::sprintf("%s:%d", GetRemoteIpAddress().to_string(), GetRemotePort());
+	}
+private:
+	MessageBuffer _packet;
+};
+#endif // _SESSION_H_

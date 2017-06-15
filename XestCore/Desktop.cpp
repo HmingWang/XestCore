@@ -13,16 +13,16 @@ void Desktop::leave(int id){
 	std::cout << "[DESK][当前人数]:" << playerMap.size() << std::endl;
 }
 void Desktop::deliver(int id,string msg){
-	if (id == 0) {
-		for (auto p : playerMap) {
-			if(p.second->getSession()!=nullptr&& p.second->getSession()->isConnected())
-				p.second->getSession()->do_write(msg);
-		}
-	}
-	else {
-		if (playerMap[id]->getSession() != nullptr&&playerMap[id]->getSession()->isConnected())
-			playerMap[id]->getSession()->do_write(msg);
-	}
+	//if (id == 0) {
+	//	for (auto p : playerMap) {
+	//		if(p.second->getSession()!=nullptr&& p.second->getSession()->isConnected())
+	//			p.second->getSession()->do_write(msg);
+	//	}
+	//}
+	//else {
+	//	if (playerMap[id]->getSession() != nullptr&&playerMap[id]->getSession()->isConnected())
+	//		playerMap[id]->getSession()->do_write(msg);
+	//}
 }
 
 void Desktop::refrash()

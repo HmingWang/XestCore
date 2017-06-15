@@ -18,8 +18,8 @@
 #ifndef __MESSAGEBUFFER_H_
 #define __MESSAGEBUFFER_H_
 
-#include "stdxafx.h"
 #include <vector>
+typedef unsigned char uint8;
 
 #define BUFFER_SIZE_DEFAULT 4096
 

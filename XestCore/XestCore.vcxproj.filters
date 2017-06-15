@@ -31,6 +31,12 @@
     <Filter Include="源文件\Server">
       <UniqueIdentifier>{fd2f65d8-71ee-4e2d-af02-55362e675a9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Network">
+      <UniqueIdentifier>{0047d654-8e1b-40a4-a0a4-16888d6d4f1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="第三方依赖库">
+      <UniqueIdentifier>{c49955c5-5697-47c3-b746-afaffeee7554}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,14 +45,11 @@
     <ClCompile Include="Player.cpp">
       <Filter>源文件\Control</Filter>
     </ClCompile>
-    <ClCompile Include="Session.cpp">
-      <Filter>源文件\Server</Filter>
-    </ClCompile>
-    <ClCompile Include="format.cc">
-      <Filter>源文件\Util</Filter>
-    </ClCompile>
     <ClCompile Include="Desktop.cpp">
       <Filter>源文件\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="format.cc">
+      <Filter>第三方依赖库</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,23 +83,11 @@
     <ClInclude Include="Desktop.h">
       <Filter>源文件\Control</Filter>
     </ClInclude>
-    <ClInclude Include="Server.hpp">
-      <Filter>源文件\Server</Filter>
-    </ClInclude>
-    <ClInclude Include="Session.h">
-      <Filter>源文件\Server</Filter>
-    </ClInclude>
     <ClInclude Include="stdxafx.h">
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="DBUtil.hpp">
       <Filter>源文件\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Command.hpp">
-      <Filter>源文件\Server</Filter>
-    </ClInclude>
-    <ClInclude Include="SessionMgr.hpp">
-      <Filter>源文件\Server</Filter>
     </ClInclude>
     <ClInclude Include="MessageBuffer.h">
       <Filter>源文件\Util</Filter>
@@ -104,14 +95,35 @@
     <ClInclude Include="CompilerDefs.h">
       <Filter>源文件\Util</Filter>
     </ClInclude>
-    <ClInclude Include="format.h">
-      <Filter>源文件\Util</Filter>
-    </ClInclude>
     <ClInclude Include="XString.hpp">
       <Filter>源文件\Cards</Filter>
     </ClInclude>
+    <ClInclude Include="AsyncAcceptor.h">
+      <Filter>源文件\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkThread.h">
+      <Filter>源文件\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>源文件\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionMgr.h">
+      <Filter>源文件\Network</Filter>
+    </ClInclude>
     <ClInclude Include="Socket.h">
-      <Filter>源文件\Server</Filter>
+      <Filter>源文件\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketMgr.h">
+      <Filter>源文件\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="format.h">
+      <Filter>第三方依赖库</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.hpp">
+      <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>源文件\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,5 +132,6 @@
     </None>
     <None Include="..\.gitattributes" />
     <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

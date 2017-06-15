@@ -4,8 +4,7 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 #include "stdxafx.h"
-#include "Session.h"
-#include "SessionMgr.hpp"
+
 
 class Desktop;
 class GameCard;
@@ -19,7 +18,7 @@ public:
 	Player(int sid,string name,bool sex=true);
 	~Player();
 
-	sptr_Session getSession();
+	//sptr_Session getSession();
 	int getID();
 	string getName();
 	string getSex();
