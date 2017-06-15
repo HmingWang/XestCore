@@ -32,7 +32,7 @@ public:
 		}
 		catch (boost::system::system_error const& err)
 		{
-			Trace("[KMGR]启动网络服务错误(%s:%u): %s", bindIp.c_str(), port, err.what());
+			Trace("[SKMR]启动网络服务错误(%s:%u): %s", bindIp.c_str(), port, err.what());
 			return false;
 		}
 

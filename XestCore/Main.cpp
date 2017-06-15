@@ -29,7 +29,7 @@ int main()
 	uint16 port = 1986;
 	Trace("[MAIN]服务器启动：[IP:%s][Port:%d]", ipAddr.c_str(), port);
 
-	sSessionMgr.StartNetwork(ios, ipAddr, port, 1);
+	sSessionMgr.StartNetwork(ios, ipAddr, port, 2);
 
 	ios.run();
 
