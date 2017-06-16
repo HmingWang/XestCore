@@ -41,8 +41,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\Program Files\PostgreSQL\9.4\include;D:\boost\boost_1_64_0;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\boost\boost_1_64_0\stage\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Program Files\PostgreSQL\9.4\include;D:\boost\boost_1_59_0;D:\boost\boost_1_64_0;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\boost\boost_1_59_0\stage\lib;D:\boost\boost_1_64_0\stage\lib;$(LibraryPath)</LibraryPath>
     <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>

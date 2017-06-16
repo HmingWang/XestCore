@@ -109,7 +109,6 @@ private:
 
 		ReadHandler();
 		AsyncRead();
-
 	}
 
 

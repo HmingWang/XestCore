@@ -1,14 +1,14 @@
 #ifndef _NETWORK_THREAD_H_
 #define _NETWORK_THREAD_H_
 
-#include <boost/asio/ip/tcp.hpp>
-#include <boost/asio/deadline_timer.hpp>
 #include <atomic>
 #include <chrono>
 #include <memory>
 #include <mutex>
 #include <set>
 #include <thread>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/deadline_timer.hpp>
 
 #define UPDATETIME 10000 //线程状态刷新时间（毫秒）
 
@@ -41,7 +41,6 @@ public:
 
 	void Run() 
 	{
-
 		Trace("[THRE]线程启动");
 		_updateTimer.expires_from_now(boost::posix_time::milliseconds(UPDATETIME));
 		_updateTimer.async_wait(std::bind(&NetworkThread<SocketType>::Update, this));
@@ -61,10 +60,7 @@ public:
 		_ioService.stop();
 	}
 
-	std::shared_ptr<tcp::socket> GetSocketForAccept() 
-	{
-		return &_acceptSocket;
-	}
+	tcp::socket* GetSocketForAccept() { return &_acceptSocket; }
 
 	int32 GetConnectionCount() const
 	{
@@ -77,13 +73,32 @@ public:
 		_thread = nullptr;
 	}
 
+	virtual void AddSocket(std::shared_ptr<SocketType> sock)
+	{
+		std::lock_guard<std::mutex> lock(_newSocketsLock);
+
+		++_connections;
+		_newSockets.push_back(sock);
+		SocketAdded(sock);
+	}
+
+
+protected:
+	//
+	virtual void SocketAdded(std::shared_ptr<SocketType> /*sock*/) { }
+	virtual void SocketRemoved(std::shared_ptr<SocketType> /*sock*/) { }
+
+
 private:
 
 	std::atomic<bool> _stopped;
 	std::atomic<int32> _connections;
+	std::mutex _newSocketsLock;
 
 	sptr_thread _thread;
-	SocketContainer _socketsContainer;
+	SocketContainer _sockets;
+	SocketContainer _newSockets;
+
 	boost::asio::io_service _ioService;
 	tcp::socket _acceptSocket;
 	boost::asio::deadline_timer _updateTimer;
