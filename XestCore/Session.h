@@ -4,6 +4,8 @@
 #include "Socket.h"
 #include "format.h"
 
+#define MODECODE "SESS"
+
 class Session:public Socket<Session>
 {
 public:
@@ -13,12 +15,12 @@ public:
 	}
 	void Start() 
 	{
-		Trace("[SESS]接收连接:[%s]", GetClientInfo().c_str());
+		Trace("接收连接:[%s]", GetClientInfo().c_str());
 		AsyncRead();
 	}
 	void ReadHandler() override 
 	{
-		Trace("[SESS]>>(%d)%s",GetReadBuffer().GetActiveSize(), GetReadBuffer().GetReadPointer());
+		Trace(">>(%d)%s",GetReadBuffer().GetActiveSize(), GetReadBuffer().GetReadPointer());
 		GetReadBuffer().ReadCompleted(GetReadBuffer().GetActiveSize());
 	}
 

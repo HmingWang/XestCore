@@ -23,9 +23,9 @@ public:
 	}
 
 
-	void write(const char* strMsg,...)
+	void write(const char* strModeCode,const char* strMsg,...)
 	{
-		std::string strTime= GetSystemTime()+ strMsg+'\n';
+		std::string strTime = GetSystemTime() + "[" + strModeCode + "]" + strMsg + '\n';
 		va_list argList;
 		va_start(argList, strMsg);
 		vfprintf(stdout, strTime.c_str(), argList);
@@ -42,5 +42,6 @@ public:
 };
 
 #define sLog Log::GetInstance()
-#define Trace(...) sLog.write(__VA_ARGS__) 
+#define MODECODE "----"
+#define Trace(...) sLog.write(MODECODE,__VA_ARGS__) 
 #endif

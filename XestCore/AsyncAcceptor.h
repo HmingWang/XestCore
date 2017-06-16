@@ -55,7 +55,7 @@ public:
 				}
 				catch (boost::system::system_error const& err)
 				{
-					Trace("Failed to initialize client's socket %s", err.what());
+					Trace("[ACCE]接收连接出错:(%d)%s", err.code().value(), err.what());
 				}
 			}
 
@@ -79,21 +79,21 @@ public:
 		_acceptor.open(_endpoint.protocol(), errorCode);
 		if (errorCode)
 		{
-			Trace("Failed to open acceptor %s", errorCode.message().c_str());
+			Trace("[ACCE]接收打开出错:%s", errorCode.message().c_str());
 			return false;
 		}
 
 		_acceptor.bind(_endpoint, errorCode);
 		if (errorCode)
 		{
-			Trace( "Could not bind to %s:%u %s", _endpoint.address().to_string().c_str(), _endpoint.port(), errorCode.message().c_str());
+			Trace( "[ACCE]无法绑定 %s:%u %s", _endpoint.address().to_string().c_str(), _endpoint.port(), errorCode.message().c_str());
 			return false;
 		}
 
 		_acceptor.listen(boost::asio::socket_base::max_connections, errorCode);
 		if (errorCode)
 		{
-			Trace( "Failed to start listening on %s:%u %s", _endpoint.address().to_string().c_str(), _endpoint.port(), errorCode.message().c_str());
+			Trace( "[ACCE]监听失败 %s:%u %s", _endpoint.address().to_string().c_str(), _endpoint.port(), errorCode.message().c_str());
 			return false;
 		}
 

@@ -10,6 +10,7 @@
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/deadline_timer.hpp>
 
+#define MODECODE "THRE"
 #define UPDATETIME 10000 //线程状态刷新时间（毫秒）
 
 using boost::asio::ip::tcp;
@@ -41,17 +42,35 @@ public:
 
 	void Run() 
 	{
-		Trace("[THRE]线程启动");
+		Trace("线程启动");
 		_updateTimer.expires_from_now(boost::posix_time::milliseconds(UPDATETIME));
 		_updateTimer.async_wait(std::bind(&NetworkThread<SocketType>::Update, this));
 		_ioService.run();
-		Trace("[THRE]线程结束");
+		Trace("线程结束");
 	}
 	void Update() 
 	{
 		_updateTimer.expires_from_now(boost::posix_time::milliseconds(UPDATETIME));
 		_updateTimer.async_wait(std::bind(&NetworkThread<SocketType>::Update, this));
-		Trace("[THRE]线程当前连接数:(ID:%d)%d",_threadId, _connections.load());
+		Trace("线程当前连接数:(ID:%d)%d",_threadId, _connections.load());
+
+		AddNewSockets();
+
+		_sockets.erase(std::remove_if(_sockets.begin(), _sockets.end(), [this](std::shared_ptr<SocketType> sock)
+		{
+			if (!sock->Update())
+			{
+				if (sock->IsOpen())
+					sock->CloseSocket();
+
+				this->SocketRemoved(sock);
+
+				--this->_connections;
+				return true;
+			}
+
+			return false;
+		}), _sockets.end());
 	}
 
 	void Stop()
@@ -88,6 +107,26 @@ protected:
 	virtual void SocketAdded(std::shared_ptr<SocketType> /*sock*/) { }
 	virtual void SocketRemoved(std::shared_ptr<SocketType> /*sock*/) { }
 
+	void AddNewSockets()
+	{
+		std::lock_guard<std::mutex> lock(_newSocketsLock);
+
+		if (_newSockets.empty())
+			return;
+
+		for (std::shared_ptr<SocketType> sock : _newSockets)
+		{
+			if (!sock->IsOpen())
+			{
+				SocketRemoved(sock);
+				--_connections;
+			}
+			else
+				_sockets.push_back(sock);
+		}
+
+		_newSockets.clear();
+	}
 
 private:
 

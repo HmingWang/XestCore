@@ -4,7 +4,7 @@
 //==============================
 //Socket Ä£°å»ùÀà
 //==============================
-
+#include <atomic>
 #include <queue>
 #include <boost/asio/ip/tcp.hpp>
 #include "Define.h"
@@ -22,7 +22,8 @@ public:
 		_remoteAddress(_socket.remote_endpoint().address()),
 		_remotePort(_socket.remote_endpoint().port()),
 		_readBuffer(),
-		_writeQueue()
+		_writeQueue(),
+		_closed(false)
 	{
 	}
 	virtual ~Socket() 
@@ -32,6 +33,14 @@ public:
 	virtual void Start() = 0;
 	virtual void OnClose() = 0;
 	virtual void ReadHandler() = 0;
+
+	virtual bool Update()
+	{
+		if (_closed)
+			return false;
+
+		return true;
+	}
 
 	void AsyncRead()
 	{
@@ -114,11 +123,13 @@ private:
 
 private:
 	tcp::socket _socket;
-
+	std::atomic<bool> _closed;
 	MessageBuffer _readBuffer;
 	std::queue<MessageBuffer> _writeQueue;
 	boost::asio::ip::address _remoteAddress;
 	uint16 _remotePort;
+
+
 
 };
 
