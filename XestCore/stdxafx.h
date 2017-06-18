@@ -20,7 +20,7 @@
 #include<boost/asio.hpp>
 #include<boost/bind.hpp>
 #include "XString.hpp"
-#include "Define.h"
+
 
 #ifdef XSTRING
 #define String XString
@@ -28,7 +28,7 @@
 #define String std::string 
 #endif
 
-typedef int8 byte;
+
 
 using std::cout;
 using std::cin;
@@ -58,13 +58,6 @@ using boost::asio::ip::tcp;
 #define PUSH_PLAYER     201
 #define PUSH_CHAT       202
 
-//字符串常量
-const string cstr_login = string(
-	"\n====================================================\n") +
-	"===        天下风云出我辈， 一入江湖岁月催；     ===\n" +
-	"===        皇图霸业谈笑间， 不胜人生一场醉。     ===\n" +
-	"===        提剑跨骑挥鬼雨， 白骨如山鸟惊飞；     ===\n" +
-	"===        尘事如潮人如水， 只叹江湖几人回。     ===\n" +
-	"====================================================\n";
+
 
 #endif //_STDXAFX_H_

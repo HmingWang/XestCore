@@ -69,7 +69,7 @@ public:
 		std::vector<XString> strVec;
 		std::string substr = *this;
 		std::string strItem;
-		int pos = 0;
+		long long  pos = 0;
 		//while (separator.length()>0 && substr.find(separator)!=std::string::npos){    //if separator is a string use this 
 		while (separator.length()>0&&count>0 && substr.find_first_of(separator)!=std::string::npos){
 			//pos = substr.find(separator);
@@ -110,7 +110,7 @@ private:
 	const int TrimBoth = 2;
 
 	std::string m_strData;
-	int Length;
+	long long Length;
 
 };
 

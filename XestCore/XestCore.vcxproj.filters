@@ -37,6 +37,9 @@
     <Filter Include="第三方依赖库">
       <UniqueIdentifier>{c49955c5-5697-47c3-b746-afaffeee7554}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Common">
+      <UniqueIdentifier>{7d8166da-bbbf-45b3-bd4b-8a2a97336bba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -50,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="format.cc">
       <Filter>第三方依赖库</Filter>
+    </ClCompile>
+    <ClCompile Include="Error.cpp">
+      <Filter>源文件\Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,12 +110,6 @@
     <ClInclude Include="NetworkThread.h">
       <Filter>源文件\Network</Filter>
     </ClInclude>
-    <ClInclude Include="Session.h">
-      <Filter>源文件\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="SessionMgr.h">
-      <Filter>源文件\Network</Filter>
-    </ClInclude>
     <ClInclude Include="Socket.h">
       <Filter>源文件\Network</Filter>
     </ClInclude>
@@ -124,6 +124,15 @@
     </ClInclude>
     <ClInclude Include="Define.h">
       <Filter>源文件\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Error.h">
+      <Filter>源文件\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionMgr.h">
+      <Filter>源文件\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>源文件\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
 #ifndef _DESSKTOP_H_
 #define _DESSKTOP_H_
 
-#include "stdxafx.h"
+//#include "stdxafx.h"
 #include "Player.h"
 
 
@@ -18,7 +18,7 @@ public:
 	void refrash();                        //刷新房间状态，为每个ID发送当前房间所有人
 	sptr_Player getPlayerById(int id);
 private:
-	map<int,sptr_Player> playerMap; //
+	map<int,sptr_Player> playerMap; // 
 	int max_players; //最大人数
 
 };

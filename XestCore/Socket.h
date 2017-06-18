@@ -23,7 +23,8 @@ public:
 		_remotePort(_socket.remote_endpoint().port()),
 		_readBuffer(),
 		_writeQueue(),
-		_closed(false)
+		_closed(false),
+		_isWritingAsync(false)
 	{
 	}
 	virtual ~Socket() 
@@ -84,11 +85,18 @@ public:
 		return _remotePort;
 	}
 private:
-	void AsyncProcessQueue()
+	bool AsyncProcessQueue()
 	{
+		if (_isWritingAsync)
+			return false;
+
+		_isWritingAsync = true;
+
 		MessageBuffer& buffer = _writeQueue.front();
 		_socket.async_write_some(boost::asio::buffer(buffer.GetReadPointer(), buffer.GetActiveSize()),
 			std::bind(&Socket<T>::WriteHandler, this->shared_from_this(), std::placeholders::_1, std::placeholders::_2));
+
+		return false;
 	}
 	void WriteHandler(boost::system::error_code errorCode, std::size_t transferredBytes)
 	{
@@ -99,12 +107,14 @@ private:
 			return;
 		}
 
+		_isWritingAsync = false;
 		_writeQueue.front().ReadCompleted(transferredBytes);
 		if (!_writeQueue.front().GetActiveSize())
 			_writeQueue.pop();
 		if (!_writeQueue.empty())
 			AsyncProcessQueue();
-		//CloseSocket();
+		//else if (_closing)
+		//	CloseSocket();
 	}
 	void ReadHandlerInternal(boost::system::error_code errorCode, std::size_t transferredBytes)
 	{
@@ -129,7 +139,7 @@ private:
 	boost::asio::ip::address _remoteAddress;
 	uint16 _remotePort;
 
-
+	bool _isWritingAsync;
 
 };
 
