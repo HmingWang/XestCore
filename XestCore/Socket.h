@@ -11,6 +11,8 @@
 #include "MessageBuffer.h"
 #include "Log.h"
 
+#define MODECODE "SOCK"
+
 using boost::asio::ip::tcp;
 template<typename T>
 class Socket : public std::enable_shared_from_this<T>
@@ -58,11 +60,11 @@ public:
 	}
 	void CloseSocket()
 	{
-		Trace("[SOCK]关闭连接");
+		Trace("关闭连接");
 		boost::system::error_code shutdownError;
 		_socket.shutdown(boost::asio::socket_base::shutdown_send, shutdownError);
 		if (shutdownError)
-			Trace("[SOCK]关闭连接出错:(%d)%s", shutdownError.value(), shutdownError.message().c_str());
+			Trace("关闭连接出错:(%d)%s", shutdownError.value(), shutdownError.message().c_str());
 
 		OnClose();
 	}
@@ -102,7 +104,7 @@ private:
 	{
 		if (errorCode)
 		{
-			Trace("[SOCK]写入消息出错:(%d)%s", errorCode.value(), errorCode.message().c_str());
+			Trace("写入消息出错:(%d)%s", errorCode.value(), errorCode.message().c_str());
 			CloseSocket();
 			return;
 		}
@@ -120,7 +122,7 @@ private:
 	{
 		if (errorCode)
 		{
-			Trace("[SOCK]读取消息出错:(%d)%s", errorCode.value(), errorCode.message().c_str());
+			Trace("读取消息出错:(%d)%s", errorCode.value(), errorCode.message().c_str());
 			CloseSocket();
 			return;
 		}
